@@ -3,12 +3,15 @@
 *This exists so that a manifest is worth reading. It is the canonical set of
 goods a ship can carry in TOM.*
 
-**Status:** agreed 2026-08-10. Forty five goods.
+**Status:** agreed 2026-08-10, extended 2026-08-11. Sixty seven goods: the
+original forty five trade goods, plus the raw materials tier and the ores and
+manufactures that came with factories. See [DESIGN_FACTORIES.md](DESIGN_FACTORIES.md).
 
 **Encoded in:** `hecate-tom-shared/priv/worlds/macao.world`, which is the
 authority for what exists. `tom_goods` owns the shape a good has, not the list.
-This document carries the reasoning and the "goes to" column, which the data
-does not.
+A good in the data is an id, a name, the regions it comes from and a line of
+character, and nothing else. This document carries the reasoning, the "goes to"
+column and the raw materials tier, none of which the data does.
 
 An id is a permanent commitment. Every stored fact that names a good names it by
 that atom, so renaming one orphans every fact that ever carried it.
@@ -112,26 +115,27 @@ and harbours name the same set.
 
 ---
 
-## What carries which job
+## What each good is for
 
-The mechanics ride on a small number of these. When building, wire the job
-before the flavour. A job nothing carries is a mechanic nothing exercises, and
-the test suite in `hecate-tom-shared` fails the build if one appears.
+A good earns its place by making one decision interesting that no other good
+makes. This table is the reasoning, and it is **reasoning only**. It was briefly
+a `jobs` field on each good in the world file, and that field has been deleted,
+because none of the eight names survived being asked where they actually belong.
 
-| Job | Atom | Carried by |
-|-----|------|-----------|
-| Money and arbitrage | `money` | Silver, gold |
-| Tests hull condition and weather routing | `fragile` | Porcelain, glassware and clocks, lacquerware |
-| Tests speed | `perishable` | Tea, deer hides, wine, horses |
-| Tests capacity | `bulk` | Pepper, rice, cowries, tutenag |
-| Tests route exclusivity | `exclusive` | Sandalwood, eaglewood |
-| Gives the Harbour Master's tax and ban real teeth | `contraband` | Opium, saltpetre |
-| The floor that keeps a bad voyage from being ruinous | `floor` | Cotton piece goods, tin |
-| Teaches that demand is local | `trap` | Broadcloth |
+| The decision | Made interesting by | Where it really lives |
+|---|---|---|
+| Money and arbitrage | Silver, gold | **The medium of exchange**, not a property of the metal |
+| Hull condition and weather routing | Porcelain, glassware and clocks, lacquerware | Real. Returns as a **damage number** when storms exist |
+| Speed | Tea, deer hides, wine, horses, arrack | Real. Returns as a **decay number** when time exists |
+| Capacity | Pepper, rice, cowries, tutenag, ore, timber | A **price** fact. Heavy means cheap per unit, once a hold takes one unit of anything |
+| Route exclusivity | Sandalwood, eaglewood, nutmeg | **Derived.** One source, which `tom_harbours:producing/2` answers |
+| The Harbour Master's tax and ban | Opium, saltpetre, gunpowder | **A harbour's decision.** Opium is banned in China and legal in Bengal |
+| The floor under a bad voyage | Cotton piece goods, tin, ironwork | A **price** fact |
+| Demand is local | Broadcloth | A **price** fact |
 
-The other twenty six goods carry no job. That is the design. Texture is what
-makes a manifest worth reading, and a list where every entry is a special case
-is a list nobody can hold in their head.
+The lesson is worth keeping: a property of a good and a property of a market are
+different things, and an enum on the good will happily hold both until somebody
+asks it to mean something.
 
 ## Deliberately excluded
 
