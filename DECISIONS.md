@@ -11,6 +11,8 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-10 | What is `tom-general`? | Plans, designs, guides, decisions. No code |
 | 2026-08-10 | One code library or two? | **One**, `tom-shared`. The rules are part of the contract, so a hazard table and a field name share a version number |
 | 2026-08-10 | Application and module naming | App `hecate_tom_shared` agrees with the repo. Modules take the short `tom_` prefix, because they appear at every call site in every service |
+| 2026-08-10 | What hazards does the ocean carry? | Travel, storms and pirates. **The word "dragons" is retired** |
+| 2026-08-10 | Where does it all run? | Ocean on `msi00`, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
 
 ## 2026-08-10: two player roles, not three
 

@@ -25,7 +25,7 @@ Plus the world, which no player owns:
 
 | Service | Is |
 |---------|-----|
-| **The Ocean** | Distance, season, weather, and where dragons be. Holds ships in transit |
+| **The Ocean** | Distance, weather, storms and pirates. Holds ships in transit |
 
 ## Repositories
 
@@ -43,6 +43,7 @@ Plus the world, which no player owns:
 |----------|-----------------|
 | [DECISIONS.md](DECISIONS.md) | What has been settled, when, and why |
 | [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) | The goods that can be traded |
+| [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) | Which service runs on which box, dialling which station |
 
 ## Not related to
 
