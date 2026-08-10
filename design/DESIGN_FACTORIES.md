@@ -3,8 +3,9 @@
 *This exists so that something in the world consumes, and so a trader has a
 reason to sail somewhere beyond guessing at prices.*
 
-**Status:** proposed 2026-08-10. Not agreed. Nothing built. Five open questions
-at the bottom.
+**Status:** agreed 2026-08-10. Recipes encoded in
+`hecate-tom-shared/priv/worlds/macao.world`. Factories as harbour state are not
+built yet.
 
 ## Why
 
@@ -94,20 +95,40 @@ the strongest possible link between the Harbour Master and the Trader. It is not
 a factory, because its output is not a good. Keep it a separate thing so the
 recipe schema stays simple.
 
-## Open
+## Settled
 
-1. **What caps the number?** Free factories mean the optimal play is build
-   everything and the decision disappears. The wall should be ground: factories
-   compete with berths and warehouses for the same finite quay.
-2. **Who owns one?** Proposed: the town owns it, the Harbour Master funds and
-   licenses it, and his return is the tax on the traffic it creates. If he owns
-   the output he becomes a trader and the two roles blur.
-3. **The raw materials tier.** Yes or no, and if yes, which.
-4. **Units.** A recipe is a ratio, so goods must be measured in comparable
-   units. Proposed: one unit for everything, with price carrying all the value
-   difference. A hold of silver and a hold of pepper then take the same space and
-   are worth wildly different money, which gives value density for free and needs
-   no second field. This also settles the open question in
-   [DESIGN_GOODS.md](DESIGN_GOODS.md).
-5. **Rate.** A factory presumably converts so much per unit of time, and time is
-   not decided.
+| Question | Answer |
+|---|---|
+| What caps the number? | **Cost.** Factories are expensive to raise and goods cost money to make. Money is the wall, so `build` and `cost` sit on the recipe |
+| Who owns one? | **The town.** The Harbour Master funds it and takes the tax on the traffic it draws. He never owns the output, so he never becomes a trader |
+| Recipes as cargo? | **Yes, and the copy is destroyed on use.** One copy raises one factory |
+| Raw materials tier? | **Yes**, including kinds of wood |
+| Rate? | **On the recipe**, as `ticks` per batch |
+
+## What was added
+
+Eleven raw materials nobody would ship for their own sake: raw cotton, wool,
+hemp, iron, kaolin, sulphur, and five kinds of wood.
+
+**The woods are five, because timber is not one thing.** Teak from Malabar and
+Siam, which the worm will not touch and which is why hulls were built at Goa and
+Cochin. Oak from Europe. Pine for masts and spars. Ebony as a luxury cargo in its
+own right. And brazilwood, the red dyewood, which incidentally repairs Bahia,
+a harbour that until now made almost nothing.
+
+Nine manufactured goods that come out of a factory and nowhere else: chintz,
+cordage, sailcloth, gunpowder, cannon, ironwork, candles, incense, arrack.
+
+Fourteen recipes. Forty five goods became sixty five.
+
+Teak, oak and pine have no recipe yet. They are honest trade goods in the
+meantime, as timber genuinely was, and they are waiting for the shipyard.
+
+## Still open
+
+**Units.** A recipe is a ratio, so goods must be measured in comparable units.
+Proposed and not yet taken: one unit for everything, with price carrying all the
+value difference. A hold of silver and a hold of pepper then take the same space
+and are worth wildly different money, which gives value density for free and
+needs no second field. This would also settle the open question in
+[DESIGN_GOODS.md](DESIGN_GOODS.md).
