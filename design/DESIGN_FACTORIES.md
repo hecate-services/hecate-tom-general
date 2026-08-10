@@ -62,31 +62,30 @@ trade in it. What saves the map is that you can weave anywhere but silk only
 grows in China. Geography binds the inputs even when the knowledge is universal.
 Without a raw materials tier, recipe diffusion flattens the world.
 
-## The cost nobody should discover later
+## The cost, which was paid
 
-Checked against the forty five goods, **exactly one recipe is possible today**:
-raw silk becomes silk piece goods.
+Checked against the original forty five goods, **exactly one recipe was
+possible**: raw silk becomes silk piece goods.
 
-Everything else the world calls a good is already finished. Porcelain has no
-clay. Broadcloth has no wool. Cotton piece goods have no raw cotton. Gunpowder
-needs sulphur, cordage needs hemp, cannon needs iron, and none of those exist.
+Everything else the world called a good was already finished. Porcelain had no
+clay. Broadcloth had no wool. Cotton piece goods had no raw cotton. Gunpowder
+needed sulphur, cordage needed hemp, cannon needed iron, and none of them
+existed.
 
-The goods list was written as things worth carrying across an ocean, which is
-close to the opposite of things worth making. So factories mean adding a **raw
-materials tier** that nobody would ship for its own sake: raw cotton, wool,
-timber, iron, clay, sulphur, hemp. Seven or eight. Plus the outputs they justify:
-cordage, canvas, gunpowder, candles, incense, arrack, cannon.
+The goods list had been written as things worth carrying across an ocean, which
+is close to the opposite of things worth making. So factories meant adding a raw
+materials tier, and it was added in one deliberate act rather than creeping in a
+recipe at a time. See [What was added](#what-was-added).
 
-That is the real price of the idea. It should be one deliberate decision, not
-something that creeps in a recipe at a time.
-
-## What to validate
+## What is validated, on load
 
 - Inputs and outputs are goods the world knows.
 - No recipe has the same good on both sides. That is a pump.
-- The recipe graph is acyclic.
-- Every input is obtainable, either plentiful at some harbour or made by another
-  recipe. This is the check that caught camphor, applied one tier up.
+- Every input is obtainable, either plentiful at some harbour or made by a
+  factory whose own inputs are obtainable. This is the check that caught camphor,
+  applied one tier up.
+- A cycle needs no separate check. It fails the rule above on its own, because a
+  cycle never resolves, and the error names the inputs that went missing.
 
 ## Not a factory
 
