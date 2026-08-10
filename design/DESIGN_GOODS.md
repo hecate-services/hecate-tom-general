@@ -13,8 +13,14 @@ A good in the data is an id, a name, its origins and a line of character, and
 nothing else. This document carries the reasoning, the "goes to"
 column and the raw materials tier, none of which the data does.
 
-An id is a permanent commitment. Every stored fact that names a good names it by
-that atom, so renaming one orphans every fact that ever carried it.
+An id is a permanent commitment. Every stored fact that names a good names it,
+so renaming one orphans every fact that ever carried it.
+
+The id in the table below is a **local name**, not an identifier. It means
+something inside this world file and nothing outside it. On the mesh a good is
+`mri:class:{realm}/tom/good/{id}`, built by `tom_mri` at runtime, because the
+realm is the game and one world file serves many games. Nothing resolves a name
+a world has not declared, and nothing turns a stranger's name into an atom.
 
 A good earns its place only if it makes some decision interesting that no other
 good makes. Anything that is merely another name for "cargo" is texture, and

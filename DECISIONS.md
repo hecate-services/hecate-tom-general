@@ -14,6 +14,8 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-10 | What hazards does the ocean carry? | Travel, storms and pirates. **The word "dragons" is retired** |
 | 2026-08-10 | What does a harbour trade? | **Everything.** Every harbour has a market where every good buys and sells at the going price. A harbour declares only what is plentiful there; demand is the complement and is never written down |
 | 2026-08-11 | Do goods carry a `jobs` enum? | **No, deleted.** `contraband` is a harbour's decision, `money` is the medium of exchange, `bulk`/`floor`/`trap` are price facts, `exclusive` is derived. Only `fragile` and `perishable` were real, and both want a number, so they return with storms and time |
+| 2026-08-11 | How are things named on the mesh? | **MRI**, `mri:class:{realm}/tom/{kind}/{name}`, built with `macula_mri`. World-file names are local and never leave the node as-is. `tom-shared` takes the `macula` dependency; TOM is a mesh application |
+| 2026-08-11 | How do peers know they share a world? | **`tom_world:digest/1`**, a sha256 over the world's content. Exchange it, refuse to trade with a peer whose world is not yours |
 | 2026-08-11 | `regions` or `origins` on a good? | **`origins`.** A harbour's `region` is where it is; a good's `origins` are where it comes from. Different relations, so different words |
 | 2026-08-11 | Do we have ores? | **Two.** Silver ore and gold ore, both refined with Chinese quicksilver. The other six metals crossed oceans as metal, so they get none |
 | 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-shared` owns the map a good is and the map a harbour is. The instances live in `priv/worlds/macao.world`. There is no closed vocabulary left in it |
