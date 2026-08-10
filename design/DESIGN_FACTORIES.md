@@ -120,13 +120,28 @@ cordage, sailcloth, gunpowder, cannon, ironwork, candles, incense, arrack.
 
 Fourteen recipes. Forty five goods became sixty five.
 
-**One ore, not eight.** There were none, and the hole showed up as quicksilver,
-a good whose own description said it refines silver and which nothing consumed.
-Acapulco and Callao now dig silver ore, and a refinery turns four ore and one
-quicksilver into one silver. The other seven metals get no ore, deliberately:
-ore did not cross oceans and metal did, since Malayan tin was smelted at the mine
-and shipped as ingots and Japanese copper as bar. An ore tier for those would
-invent a trade that never existed and add a step with no decision in it.
+**Ores for the two money metals.** There were none at all, and the hole showed
+up as quicksilver, a good whose own description said it refines silver and which
+nothing consumed.
+
+Acapulco and Callao dig silver ore. Mozambique and Bantam dig gold ore, from the
+reefs of Monomotapa and the Sumatran fields. Each refinery turns four ore and one
+quicksilver into one metal.
+
+So gold and silver each enter the world two ways: **found**, which is limited and
+needs nobody, and **refined**, which needs ore, mercury and a works. Japanese
+silver and river gold arrive from the first minute. American silver and reef gold
+wait on somebody building the refinery, which is the order it happened in.
+
+The second ore is not there for symmetry. **Macao is the only source of
+quicksilver in the world**, and now two refineries bid against each other for it.
+That is a bottleneck with a decision in it, which is the test any new content
+should have to pass.
+
+The other six metals get no ore, deliberately. Ore did not cross oceans and metal
+did, since Malayan tin was smelted at the mine and shipped as ingots and Japanese
+copper as bar. An ore tier for those would invent a trade that never existed and
+add a step with nothing to decide.
 
 Teak, oak and pine have no recipe yet. They are honest trade goods in the
 meantime, as timber genuinely was, and they are waiting for the shipyard.
