@@ -9,8 +9,8 @@ manufactures that came with factories. See [DESIGN_FACTORIES.md](DESIGN_FACTORIE
 
 **Encoded in:** `hecate-tom-shared/priv/worlds/macao.world`, which is the
 authority for what exists. `tom_goods` owns the shape a good has, not the list.
-A good in the data is an id, a name, the regions it comes from and a line of
-character, and nothing else. This document carries the reasoning, the "goes to"
+A good in the data is an id, a name, its origins and a line of character, and
+nothing else. This document carries the reasoning, the "goes to"
 column and the raw materials tier, none of which the data does.
 
 An id is a permanent commitment. Every stored fact that names a good names it by
@@ -26,7 +26,7 @@ decision actually turned out to live, is in
 
 ## From China
 
-Canton, Nanking, Jingdezhen, Fujian. Region atom `china`.
+Canton, Nanking, Jingdezhen, Fujian. Origin `china`.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -44,7 +44,7 @@ Canton, Nanking, Jingdezhen, Fujian. Region atom `china`.
 
 ## From Japan
 
-Region atom `japan`.
+Origin `japan`.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -54,7 +54,7 @@ Region atom `japan`.
 
 ## From the archipelago and mainland Southeast Asia
 
-Region atom `southeast_asia`.
+Origin `southeast_asia`.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -77,8 +77,8 @@ Region atom `southeast_asia`.
 
 ## From India, Ceylon, Persia and Arabia
 
-Region atom `south_asia`, except horses, which are `west_asia`, and ivory, which
-is also `east_africa`.
+Origin `south_asia`, except horses, which are `west_asia`, and ivory, which is
+also `east_africa`.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -94,8 +94,8 @@ is also `east_africa`.
 
 ## From Europe and the New World, via Lisbon or Manila
 
-Region atom `europe`, except tobacco, which is `south_america` and
-`north_america`, and silver, which comes out of Japan and both Americas.
+Origin `europe`, except tobacco, which is `south_america` and `north_america`,
+and silver, which comes out of Japan and both Americas.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -108,11 +108,14 @@ Region atom `europe`, except tobacco, which is `south_america` and
 | Glassware and clocks | `glassware_and_clocks` | Canton | The curiosity trade. Fragile, and novelty wears off |
 
 Silver appears in two tables. It is one good with three taps, Japan, New Spain
-and Peru, not three goods, and carries all three region atoms.
+and Peru, not three goods, and carries all three origins.
 
 The nine regions are `china`, `japan`, `southeast_asia`, `south_asia`,
 `west_asia`, `east_africa`, `europe`, `north_america` and `south_america`. Goods
-and harbours name the same set.
+and harbours name the same set, but not the same relation: a harbour's `region`
+is where it **is**, and a good's `origins` are where it **comes from**. The field
+was called `regions` on both until 2026-08-11, which read fine and meant two
+things.
 
 ---
 
