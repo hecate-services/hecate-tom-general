@@ -54,7 +54,7 @@ anybody editing a file.
 | **Goa** | `goa` | Asia, the Malabar coast | Cotton piece goods, opium, saltpetre, indigo, cinnamon, ivory, pearls, cowries, pepper |
 | **Manila** | `manila` | Asia, the Philippines | Nothing. A pure entrepot, and rich anyway |
 | **Lisbon** | `lisbon` | Europe | Lead, coral, broadcloth, wine, glassware and clocks |
-| **Acapulco** | `acapulco` | North America, New Spain | Silver |
+| **Acapulco** | `acapulco` | North America, New Spain | Silver ore, and nothing else |
 | **Bahia** | `bahia` | South America, Portuguese Brazil | Sugar, tobacco |
 
 Five in Asia, one each in Europe, North America and South America.
@@ -71,6 +71,12 @@ which is exactly why it should be crowded.
 **The galleon.** Macao to Manila to Acapulco. Chinese goods meet New World
 silver. Acapulco is a dead end: its only link is Manila. That makes it a port
 with one route and an enormous prize on it, which is where the pirates belong.
+
+And the route is loaded both ways, which is the part worth having. Acapulco digs
+**ore**, not silver, and ore is worth nothing without quicksilver, which comes
+out of China. So mercury sails east to west and silver sails west to east on the
+same water. American silver waits on somebody building the refinery; Japanese
+silver needs nobody, which is the order it happened in.
 
 **The long haul.** Macao to Malacca to Goa to Lisbon. Months, many hands, and
 every leg a chance to sell early rather than hold out for Lisbon prices. The

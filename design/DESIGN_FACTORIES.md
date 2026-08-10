@@ -120,6 +120,14 @@ cordage, sailcloth, gunpowder, cannon, ironwork, candles, incense, arrack.
 
 Fourteen recipes. Forty five goods became sixty five.
 
+**One ore, not eight.** There were none, and the hole showed up as quicksilver,
+a good whose own description said it refines silver and which nothing consumed.
+Acapulco and Callao now dig silver ore, and a refinery turns four ore and one
+quicksilver into one silver. The other seven metals get no ore, deliberately:
+ore did not cross oceans and metal did, since Malayan tin was smelted at the mine
+and shipped as ingots and Japanese copper as bar. An ore tier for those would
+invent a trade that never existed and add a step with no decision in it.
+
 Teak, oak and pine have no recipe yet. They are honest trade goods in the
 meantime, as timber genuinely was, and they are waiting for the shipyard.
 
