@@ -6,7 +6,7 @@ is a deliberate act rather than a slow drift.*
 | Date | Question | Decision |
 |------|----------|----------|
 | 2026-08-10 | How many player roles? | **Two.** Harbour Master and Trader. The Trader owns and maintains the fleet as well as trading the goods |
-| 2026-08-10 | Which goods can be traded? | Forty five, recorded in [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) |
+| 2026-08-10 | Which goods can be traded? | Forty five trade goods, recorded in [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md). Sixty seven since the raw materials tier |
 | 2026-08-10 | Are slaves tradeable? | **No.** Historically part of Macao's trade, excluded by decision |
 | 2026-08-10 | What is `tom-general`? | Plans, designs, guides, decisions. No code |
 | 2026-08-10 | One code library or two? | **One**, `tom-shared`. The rules are part of the contract, so a hazard table and a field name share a version number |
@@ -15,7 +15,7 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-10 | What does a harbour trade? | **Everything.** Every harbour has a market where every good buys and sells at the going price. A harbour declares only what is plentiful there; demand is the complement and is never written down |
 | 2026-08-11 | Do goods carry a `jobs` enum? | **No, deleted.** `contraband` is a harbour's decision, `money` is the medium of exchange, `bulk`/`floor`/`trap` are price facts, `exclusive` is derived. Only `fragile` and `perishable` were real, and both want a number, so they return with storms and time |
 | 2026-08-11 | Do we have ores? | **Two.** Silver ore and gold ore, both refined with Chinese quicksilver. The other six metals crossed oceans as metal, so they get none |
-| 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-shared` owns the map a good is and the map a harbour is. The instances live in `priv/worlds/macao.world`. The one exception is the job list, a closed enum, because the engine implements each job |
+| 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-shared` owns the map a good is and the map a harbour is. The instances live in `priv/worlds/macao.world`. There is no closed vocabulary left in it |
 | 2026-08-10 | Where does it all run? | Ocean on `msi00`, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
 
 ## 2026-08-10: two player roles, not three

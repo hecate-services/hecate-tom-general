@@ -18,8 +18,9 @@ that atom, so renaming one orphans every fact that ever carried it.
 
 A good earns its place only if it makes some decision interesting that no other
 good makes. Anything that is merely another name for "cargo" is texture, and
-texture is welcome, but the mechanics ride on the handful listed under
-[What carries which job](#what-carries-which-job).
+texture is welcome. Which good was meant to make which decision, and where that
+decision actually turned out to live, is in
+[What each good is for](#what-each-good-is-for).
 
 ---
 
