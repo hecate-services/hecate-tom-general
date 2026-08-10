@@ -9,14 +9,17 @@ lives here.
 
 ## The shape of the game
 
-Three player roles, each one `hecate-om` service hosted by that player on their
+Two player roles, each one `hecate-om` service hosted by that player on their
 own machine, each serving its own web UI:
 
 | Role | Owns | Plays |
 |------|------|-------|
 | **Harbour Master** | A harbour | Taxes the market, sells and plans berths, rents storage, repairs ships, and pays to keep lanes open and docks dug |
-| **Trader** | Capital and cargo | Buys and sells, forms a trading party, leases storage in harbours |
-| **Ship Master** | A ship | Charters her out, provisions her, sets her orders and lets her sail |
+| **Trader** | Capital, cargo and hulls | Buys and sells, and keeps the fleet of boats and ships that carries it |
+
+The Trader carries both risks at once: what the cargo fetches, and what the hull
+costs to keep afloat. Every florin put into another hull is a florin not put
+into another lot, which is the tension the role is built on.
 
 Plus the world, which no player owns:
 
@@ -32,13 +35,13 @@ Plus the world, which no player owns:
 | `hecate-tom-shared` | The library every service links: fact schemas, the custody handover, signing, the conservation auditor, goods, price curves, hazard tables |
 | `hecate-tom-harbour` | The Harbour Master's service |
 | `hecate-tom-trader` | The Trader's service |
-| `hecate-tom-ship-master` | The Ship Master's service |
 | `hecate-tom-ocean` | The world service |
 
 ## Documents
 
 | Document | What it settles |
 |----------|-----------------|
+| [DECISIONS.md](DECISIONS.md) | What has been settled, when, and why |
 | [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) | The goods that can be traded |
 
 ## Not related to
