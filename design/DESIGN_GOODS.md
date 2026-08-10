@@ -5,10 +5,13 @@ goods a ship can carry in TOM.*
 
 **Status:** agreed 2026-08-10. Forty five goods.
 
-**Encoded in:** `hecate-tom-shared`, module `tom_goods`. The `Id` column below
-is the atom used there, and it is a permanent commitment. Every signed fact
-that names a good names it by that atom, so renaming one invalidates every
-fact that ever carried it.
+**Encoded in:** `hecate-tom-shared/priv/worlds/macao.world`, which is the
+authority for what exists. `tom_goods` owns the shape a good has, not the list.
+This document carries the reasoning and the "goes to" column, which the data
+does not.
+
+An id is a permanent commitment. Every stored fact that names a good names it by
+that atom, so renaming one orphans every fact that ever carried it.
 
 A good earns its place only if it makes some decision interesting that no other
 good makes. Anything that is merely another name for "cargo" is texture, and
@@ -70,7 +73,8 @@ Region atom `southeast_asia`.
 
 ## From India, Ceylon, Persia and Arabia
 
-Region atom `india`.
+Region atom `south_asia`, except horses, which are `west_asia`, and ivory, which
+is also `east_africa`.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -86,7 +90,8 @@ Region atom `india`.
 
 ## From Europe and the New World, via Lisbon or Manila
 
-Region atom `west`.
+Region atom `europe`, except tobacco, which is `south_america` and
+`north_america`, and silver, which comes out of Japan and both Americas.
 
 | Good | Id | Goes to | Character |
 |---|---|---|---|
@@ -98,8 +103,12 @@ Region atom `west`.
 | Tobacco | `tobacco` | Manila, China | New and fashionable. Demand rising, not yet established |
 | Glassware and clocks | `glassware_and_clocks` | Canton | The curiosity trade. Fragile, and novelty wears off |
 
-Silver appears in two tables. It is one good with two taps, not two goods, and
-carries both region atoms.
+Silver appears in two tables. It is one good with three taps, Japan, New Spain
+and Peru, not three goods, and carries all three region atoms.
+
+The nine regions are `china`, `japan`, `southeast_asia`, `south_asia`,
+`west_asia`, `east_africa`, `europe`, `north_america` and `south_america`. Goods
+and harbours name the same set.
 
 ---
 

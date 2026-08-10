@@ -3,13 +3,33 @@
 *This exists so a trader has somewhere to sail to, and a reason to prefer one
 place over another.*
 
-**Status:** proposed 2026-08-10. Eight harbours.
+**Status:** agreed 2026-08-10. A pool of twenty nine, of which eight play.
 
-Each is one `hecate-tom-harbour` service run by a player. Which box it runs on
-and which station it dials are arbitrary and have nothing to do with where it
-sits in the game. See [DESIGN_DEPLOYMENT.md](DESIGN_DEPLOYMENT.md).
+**Encoded in:** `hecate-tom-shared/priv/worlds/macao.world`, which is the
+authority for what exists. This document carries the reasoning.
 
-## The eight
+Each playing harbour is one `hecate-tom-harbour` service run by a player. Which
+box it runs on and which station it dials are arbitrary and have nothing to do
+with where it sits in the game. See [DESIGN_DEPLOYMENT.md](DESIGN_DEPLOYMENT.md).
+
+## The pool
+
+Twenty nine harbours, so that a game is a **selection** rather than the whole
+world. Adding one is an edit to the world file.
+
+| Region | Harbours |
+|---|---|
+| `china` | Macao |
+| `japan` | Nagasaki, Hirado |
+| `southeast_asia` | Malacca, Manila, Batavia, Bantam, Macassar, Ternate, Banda, Lifau, Ayutthaya, Hoi An, Jolo |
+| `south_asia` | Goa, Surat, Cochin, Nagapattinam, Colombo |
+| `west_asia` | Hormuz |
+| `east_africa` | Mozambique |
+| `europe` | Lisbon, Seville, Antwerp, Amsterdam |
+| `north_america` | Acapulco, Havana |
+| `south_america` | Bahia, Callao |
+
+## The eight for the first game
 
 | Harbour | Id | Where | Sells cheap | Wants dear |
 |---|---|---|---|---|
@@ -57,5 +77,14 @@ Macao is where a foreigner may buy them. Splitting them buys nothing yet.
 **Bahia is thin.** Of the forty five goods it only sells sugar and tobacco.
 Brazilwood would be the obvious addition when it starts to matter.
 
-**No Dutch port.** Batavia or Bantam would give the map a rival and a second
-European power. Worth having later. Eight is enough to start.
+**The pool answers what the eight could not.** Batavia and Bantam are the Dutch
+rivals, Macassar is the free port where anything banned elsewhere is sold,
+Hormuz supplies the horses and Mozambique is the Cape route's halfway house.
+None of them play in the first game. They are there so the second game is a
+different game.
+
+**Every good has a source and a market, and this is enforced.** A test in
+`tom-shared` walks the world and fails the build if any good cannot be loaded
+somewhere and sold somewhere. It caught seventeen goods nobody wanted and
+camphor sold nowhere, which is exactly the kind of hole that only shows up when
+a trader goes looking for a buyer.
