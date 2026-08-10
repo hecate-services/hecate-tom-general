@@ -3,7 +3,12 @@
 *This exists so a game of TOM runs on real boxes across a real mesh, and not on
 one machine pretending to be many.*
 
-**Status:** stated 2026-08-10. One constraint unresolved, see [Stations](#stations).
+**Status:** stated 2026-08-10.
+
+**Stations are infrastructure. They have nothing to do with where a harbour is
+in the game.** A harbour sitting in Macao may dial a station in Helsinki. The
+station is how its service reaches the mesh, and that is the whole of its
+involvement. Do not read a station name as a place in the story.
 
 ## The layout as asked for
 
@@ -13,49 +18,29 @@ one machine pretending to be many.*
 | `hecate-tom-harbour`, eight instances | `beam00.lab` to `beam03.lab`, two per node | docker, watchtower |
 | `hecate-tom-trader`, one instance | Raf's workstation | whatever is convenient. It dials out |
 
-Each harbour dials a **different** `macula-station`. That is the point of the
-exercise: eight harbours that are genuinely separate peers on the mesh, not
-eight processes sharing one station and calling it distributed.
+Each harbour dials a **different** `macula-station`, so that eight harbours are
+genuinely separate peers on the mesh rather than eight processes sharing one
+station and calling it distributed.
 
-The harbours are meant to sit in North America, South America, Europe and Asia.
+The eight harbours are placed around the world in the game: North America, South
+America, Europe, Asia. That is the map, and it costs nothing.
 
 ## Stations
 
-Seven stations exist. All seven are in Europe. Source of truth is
+Seven exist. Source of truth is
 `macula-io/macula-demo/infrastructure/FLEET.md`.
 
-| Station | Box | Real location |
-|---------|-----|---------------|
-| `station-de-falkenstein` | stations-hetzner-falkenstein | Germany |
-| `station-de-nuremberg` | relays-hetzner-nuremberg | Germany |
-| `station-de-frankfurt` | macula.io | Germany. The name is a station name, not a location claim |
-| `station-fi-helsinki` | relays-hetzner-helsinki | Finland |
-| `station-fr-paris` | relays-linode-paris | France |
-| `station-it-milan` | stations-linode-milan | Italy |
-| `station-se-stockholm` | stations-linode-stockholm | Sweden |
+`station-de-falkenstein`, `station-de-nuremberg`, `station-de-frankfurt`,
+`station-fi-helsinki`, `station-fr-paris`, `station-it-milan`,
+`station-se-stockholm`.
 
-Two things follow.
+Eight harbours over seven stations means either one pair shares a station, which
+changes nothing that matters, or an eighth station goes up in the lab, which is
+free. Assignment is arbitrary. Any harbour can dial any station.
 
-**Eight harbours need an eight station.** The options, cheapest first:
-
-1. **Run seven harbours.** Four nodes carry two each except one, which carries
-   one. Costs nothing and delays nothing.
-2. **Stand a station up in the lab**, on a beam node or on `msi00`. Free, and
-   the harbour dialling it gets lab-local latency while the other seven get WAN
-   latency, which makes one harbour quietly different from the rest.
-3. **Add an eighth box.** Real money, roughly five euros a month.
-
-**Real geography is a separate decision from game geography.** If the four
-continents are where the harbours *are in the story*, nothing further is needed
-and the story is free. If they are meant to be real, so that sailing from Asia
-to Europe costs real milliseconds, that is four to eight new boxes outside
-Europe at roughly five euros a month each. Linode has Singapore, Tokyo, Mumbai,
-São Paulo, Newark and Toronto, so it is possible, and it is the only part of
-this layout that costs money.
-
-**One known fault to route around.** `FLEET.md` records that `station-it-milan`
-and `station-se-stockholm` currently resolve to the wrong boxes, and that the
-retired-name prune has not run. Confirm what a name resolves to before pinning a
+One fault to route around: `FLEET.md` records that `station-it-milan` and
+`station-se-stockholm` currently resolve to the wrong boxes, and that the
+retired-name prune has not run. Check what a name resolves to before pinning a
 harbour to it.
 
 ## Ports
