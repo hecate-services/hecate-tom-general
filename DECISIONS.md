@@ -12,6 +12,8 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-10 | One code library or two? | **One**, `tom-shared`. The rules are part of the contract, so a hazard table and a field name share a version number |
 | 2026-08-10 | Application and module naming | App `hecate_tom_shared` agrees with the repo. Modules take the short `tom_` prefix, because they appear at every call site in every service |
 | 2026-08-10 | What hazards does the ocean carry? | Travel, storms and pirates. **The word "dragons" is retired** |
+| 2026-08-10 | What does a harbour trade? | **Everything.** Every harbour has a market where every good buys and sells at the going price. A harbour declares only what is plentiful there; demand is the complement and is never written down |
+| 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-shared` owns the map a good is and the map a harbour is. The instances live in `priv/worlds/macao.world`. The one exception is the job list, a closed enum, because the engine implements each job |
 | 2026-08-10 | Where does it all run? | Ocean on `msi00`, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
 
 ## 2026-08-10: two player roles, not three

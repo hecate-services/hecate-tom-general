@@ -29,18 +29,33 @@ world. Adding one is an edit to the world file.
 | `north_america` | Acapulco, Havana |
 | `south_america` | Bahia, Callao |
 
+## Every harbour has a market
+
+Every good can be bought and sold at every harbour, at the going price. So a
+harbour has no stock list and no shopping list: both answers are all of them.
+
+The only thing a harbour declares is what is **plentiful** there, which is what
+the column below shows. Plentiful is cheap. Everything else is dear until
+somebody sails it in.
+
+Demand is the other side of the same fact and is never written down. A harbour
+is short of whatever it does not make, so `tom_harbours:wanting/2` is simply the
+complement of `producing/2`. When prices arrive this coarse split becomes a
+number, and a harbour flooded with pepper stops being short of pepper without
+anybody editing a file.
+
 ## The eight for the first game
 
-| Harbour | Id | Where | Sells cheap | Wants dear |
-|---|---|---|---|---|
-| **Macao** | `macao` | Asia, the Pearl River | Raw silk, silk piece goods, porcelain, tea, gold, musk, rhubarb, sugar, tutenag, quicksilver | Silver, pepper, sandalwood, eaglewood, ivory, birds' nests, cotton |
-| **Nagasaki** | `nagasaki` | Asia, Japan | Silver, copper, lacquerware | Raw silk, silk piece goods, deer hides, sugar, porcelain |
-| **Malacca** | `malacca` | Asia, the strait | Pepper, tin, cloves, nutmeg, mace, sandalwood, eaglewood, benzoin, trepang, tortoiseshell, beeswax, rice, ambergris, shark fin, birds' nests | Cotton piece goods, opium, silver, porcelain |
-| **Goa** | `goa` | Asia, the Malabar coast | Cotton piece goods, opium, saltpetre, indigo, cinnamon, ivory, pearls, horses, cowries, pepper | Gold, silk, porcelain, copper, cloves, coral |
-| **Manila** | `manila` | Asia, the Philippines | Silver, tobacco | Everything Chinese, above all silk and porcelain |
-| **Lisbon** | `lisbon` | Europe | Lead, coral, broadcloth, wine, glassware and clocks | Everything eastern |
-| **Acapulco** | `acapulco` | North America, New Spain | Silver | Silk, porcelain, and little else |
-| **Bahia** | `bahia` | South America, Portuguese Brazil | Sugar, tobacco | Broadcloth, wine, cotton piece goods, tools |
+| Harbour | Id | Where | Plentiful, so cheap |
+|---|---|---|---|
+| **Macao** | `macao` | Asia, the Pearl River | Raw silk, silk piece goods, porcelain, tea, gold, musk, rhubarb, sugar, tutenag, quicksilver |
+| **Nagasaki** | `nagasaki` | Asia, Japan | Silver, copper, lacquerware |
+| **Malacca** | `malacca` | Asia, the strait | Pepper, tin, cloves, nutmeg, mace, sandalwood, eaglewood, benzoin, trepang, tortoiseshell, beeswax, rice, ambergris, shark fin, birds' nests, camphor |
+| **Goa** | `goa` | Asia, the Malabar coast | Cotton piece goods, opium, saltpetre, indigo, cinnamon, ivory, pearls, cowries, pepper |
+| **Manila** | `manila` | Asia, the Philippines | Nothing. A pure entrepot, and rich anyway |
+| **Lisbon** | `lisbon` | Europe | Lead, coral, broadcloth, wine, glassware and clocks |
+| **Acapulco** | `acapulco` | North America, New Spain | Silver |
+| **Bahia** | `bahia` | South America, Portuguese Brazil | Sugar, tobacco |
 
 Five in Asia, one each in Europe, North America and South America.
 
@@ -74,8 +89,9 @@ deal with and the one best placed to be greedy.
 **Macao and Canton are one port here.** Canton is where the goods come from and
 Macao is where a foreigner may buy them. Splitting them buys nothing yet.
 
-**Bahia is thin.** Of the forty five goods it only sells sugar and tobacco.
-Brazilwood would be the obvious addition when it starts to matter.
+**Bahia makes little.** Sugar and tobacco, out of forty five goods. It buys
+everything, like every harbour, but there is not much reason to sail there to
+load. Brazilwood is the obvious addition when it starts to matter.
 
 **The pool answers what the eight could not.** Batavia and Bantam are the Dutch
 rivals, Macassar is the free port where anything banned elsewhere is sold,
@@ -83,8 +99,7 @@ Hormuz supplies the horses and Mozambique is the Cape route's halfway house.
 None of them play in the first game. They are there so the second game is a
 different game.
 
-**Every good has a source and a market, and this is enforced.** A test in
-`tom-shared` walks the world and fails the build if any good cannot be loaded
-somewhere and sold somewhere. It caught seventeen goods nobody wanted and
-camphor sold nowhere, which is exactly the kind of hole that only shows up when
-a trader goes looking for a buyer.
+**Every good is plentiful somewhere, and this is enforced.** A test in
+`tom-shared` walks the world and fails the build if a good is produced nowhere,
+because such a good could never enter the world at all. It caught camphor, which
+forty five goods and twenty nine harbours had left with no source.
