@@ -43,6 +43,7 @@ Plus the world, which no player owns:
 |----------|-----------------|
 | [DECISIONS.md](DECISIONS.md) | What has been settled, when, and why |
 | [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) | The goods that can be traded |
+| [design/DESIGN_HARBOURS.md](design/DESIGN_HARBOURS.md) | The eight harbours and the routes between them |
 | [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) | Which service runs on which box, dialling which station |
 
 ## Not related to
