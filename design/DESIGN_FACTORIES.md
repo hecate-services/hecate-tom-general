@@ -4,7 +4,7 @@
 reason to sail somewhere beyond guessing at prices.*
 
 **Status:** agreed 2026-08-10. Recipes encoded in
-`hecate-tom-shared/priv/worlds/macao.world`. Factories as harbour state are not
+`hecate-tom-world/priv/worlds/macao.world`. Factories as harbour state are not
 built yet.
 
 ## Why

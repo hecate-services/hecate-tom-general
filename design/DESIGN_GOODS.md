@@ -7,7 +7,7 @@ goods a ship can carry in TOM.*
 original forty five trade goods, plus the raw materials tier and the ores and
 manufactures that came with factories. See [DESIGN_FACTORIES.md](DESIGN_FACTORIES.md).
 
-**Encoded in:** `hecate-tom-shared/priv/worlds/macao.world`, which is the
+**Encoded in:** `hecate-tom-world/priv/worlds/macao.world`, which is the
 authority for what exists. `tom_goods` owns the shape a good has, not the list.
 A good in the data is an id, a name, its origins and a line of character, and
 nothing else. This document carries the reasoning, the "goes to"

@@ -5,7 +5,7 @@ place over another.*
 
 **Status:** agreed 2026-08-10. A pool of twenty nine, of which eight play.
 
-**Encoded in:** `hecate-tom-shared/priv/worlds/macao.world`, which is the
+**Encoded in:** `hecate-tom-world/priv/worlds/macao.world`, which is the
 authority for what exists. This document carries the reasoning.
 
 Each playing harbour is one `hecate-tom-harbour` service run by a player. Which
@@ -106,6 +106,6 @@ None of them play in the first game. They are there so the second game is a
 different game.
 
 **Every good is plentiful somewhere, and this is enforced.** A test in
-`tom-shared` walks the world and fails the build if a good is produced nowhere,
+`tom-world` walks the world and fails the build if a good is produced nowhere,
 because such a good could never enter the world at all. It caught camphor, which
 forty five goods and twenty nine harbours had left with no source.

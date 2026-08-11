@@ -32,10 +32,16 @@ Plus the world, which no player owns:
 | Repo | Holds |
 |------|-------|
 | `hecate-tom-general` | This one. Plans, designs, guides, decisions |
-| `hecate-tom-shared` | The library every service links: fact schemas, the custody handover, signing, the conservation auditor, goods, price curves, hazard tables |
+| `hecate-tom-world` | Owns reference data: goods, harbours, recipes, regions. Publishes facts. Linked by nobody |
 | `hecate-tom-harbour` | The Harbour Master's service |
 | `hecate-tom-trader` | The Trader's service |
-| `hecate-tom-ocean` | The world service |
+| `hecate-tom-ocean` | Travel, weather, storms and pirates. Holds ships in transit |
+
+**There is no shared library.** One service owns a fact and the others consume
+it. A shared domain model would couple every service to one shape and would mean
+every player upgrading in lockstep to learn about a new good, which is exactly
+what the mesh is supposed to avoid. What a service links is `macula`, like any
+other client, and nothing of ours.
 
 ## Documents
 
@@ -44,7 +50,7 @@ Plus the world, which no player owns:
 | [DECISIONS.md](DECISIONS.md) | What has been settled, when, and why |
 | [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) | The goods that can be traded |
 | [design/DESIGN_HARBOURS.md](design/DESIGN_HARBOURS.md) | The eight harbours and the routes between them |
-| [design/DESIGN_FACTORIES.md](design/DESIGN_FACTORIES.md) | Factories, recipes, and recipes as cargo. Proposed, not agreed |
+| [design/DESIGN_FACTORIES.md](design/DESIGN_FACTORIES.md) | Factories, recipes, and recipes as cargo |
 | [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) | Which service runs on which box, dialling which station |
 
 ## Not related to
