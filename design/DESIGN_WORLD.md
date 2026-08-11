@@ -3,8 +3,11 @@
 *This exists so that adding a good does not require eight people to redeploy
 their laptops on the same afternoon.*
 
-**Status:** stormed 2026-08-11. Nothing built beyond the model it will own.
-Six hotspots at the bottom, all open.
+**Status:** stormed 2026-08-11, then cut down the same day. Nothing built beyond
+the model it will own. Five hotspots at the bottom, all open.
+
+Ten events, not fifteen. Recipes turned out to be permanent, which deleted three
+of them and the whole edition mechanism with them.
 
 `hecate-tom-world` owns reference data: what goods exist, what ports exist, what
 can be made from what. It publishes facts. **Nobody links it.** Harbours and
@@ -28,11 +31,7 @@ about a game in progress.
 | `harbour_described_v1` | Its display name or line of character changed |
 | `harbour_produce_revised_v1` | What is plentiful there changed, so what is cheap there changed |
 | `harbour_closed_v1` | The port is off the map. Refused while it is the only source of a good |
-| `recipe_published_v1` | A factory of this kind can be built. Carries inputs, outputs, build, cost, ticks |
-| `recipe_reformulated_v1` | What it eats or what it makes changed |
-| `recipe_retuned_v1` | Its numbers changed: what it costs to build, what a batch costs, how long a batch takes |
-| `recipe_retired_v1` | No new factory of this kind can be built |
-| `edition_sealed_v1` | The catalogue as it stands is frozen and numbered. A game pins one of these and is unaffected by later changes until it adopts a newer one |
+| `recipe_published_v1` | A process was invented. Carries inputs, outputs and how long a batch takes. **This is the only recipe event there will ever be** |
 
 Commands are the present tense of each, with the usual handlers:
 `introduce_good_v1` and `maybe_introduce_good`, `open_harbour_v1` and
@@ -52,13 +51,22 @@ goods, harbours and recipes are entities inside it rather than child aggregates.
 The cost is one long stream with a single writer, which for reference data that
 changes a few times a week is not a cost at all.
 
-**Editions answer mid-game change.** `edition_sealed_v1` names an immutable
-point: a position, a digest, a label. A game **pins an edition**. The steward
-keeps curating, changes land in the stream, and a running game is untouched until
-it deliberately adopts a newer edition.
+**A recipe cannot be un-invented, so the world only grows, so editions are not
+needed.** There was going to be an `edition_sealed_v1`, freezing a numbered
+snapshot for a game to pin, protecting a running game from a change that might
+break it.
 
-That is the thing that started all of this. A player who is behind is not broken;
-they are on an older edition and can see exactly how far behind they are.
+Nothing can break it. A recipe is permanent: a better process is a new recipe
+published beside the old, and the old keeps working for whoever holds a copy. No
+retuning, no reformulating, no retiring. Nothing else is destroyed either.
+
+So a peer that is behind simply knows fewer things. It can still trade everything
+it knows about, and it cannot trade the new good until it catches up. That is a
+soft failure, and it needs no version pinning, no digest agreement and no
+adoption ceremony.
+
+It also makes "which gunpowder recipe do you hold" a real question, since an
+older, hungrier process still runs and still competes.
 
 ## What gets published, which is not the log
 
@@ -66,12 +74,11 @@ Two facts, not a firehose of domain events. The log is this service's business.
 
 | Fact | Carries |
 |---|---|
-| `tom.world.edition_sealed` | World, edition, digest, stream position |
-| `tom.world.catalogue` | The whole catalogue at a given edition, in one answer |
+| `tom.world.catalogue` | The whole catalogue as it stands, in one answer |
+| `tom.world.grew` | What was added, since that is the only thing that ever happens |
 
-A newcomer asks for the catalogue at the current edition and gets sixty seven
-goods in one call rather than replaying five hundred events. After that it
-follows changes.
+A newcomer asks for the catalogue and gets sixty seven goods in one call rather
+than replaying five hundred events. After that it follows what was added.
 
 ## Genesis
 
@@ -86,26 +93,22 @@ The file stays, because it is the readable place to author a new world.
 
 All open. Each one changes what gets built.
 
-**1. A retuned recipe under a running factory.** A harbour built a powder mill at
-edition 3, the game adopts edition 4, and the mill's costs moved underneath it.
-Grandfather the mill on the edition it was built at, or apply the new numbers
-immediately? This needs an answer before any of it is built.
+**1. Who is the steward?** One key, the realm, or a rotating referee. Governance,
+not engineering. And if recipes are inventions rather than decrees, could players
+invent them in play rather than receiving them from a curator?
 
-**2. Who is the steward?** One key, the realm, or a rotating referee. Governance,
-not engineering.
-
-**3. Where does a refusal go?** `good_withdrawn` can be refused because a recipe
+**2. Where does a refusal go?** `good_withdrawn` can be refused because a recipe
 still eats it. A refusal is not an event, so the steward needs to be told, which
 means the command side needs a reply path and not just a stream.
 
-**4. Do harbours belong here at all?** The map of twenty nine ports is reference
+**3. Do harbours belong here at all?** The map of twenty nine ports is reference
 data and clearly does. "Raf runs Macao this game" is session state and clearly
 does not. The line is obvious in those two cases and needs stating for the ones
 in between.
 
-**5. Genesis idempotency.** Replaying the file twice must not double the world.
+**4. Genesis idempotency.** Replaying the file twice must not double the world.
 A founding guard, probably, but it should be named rather than assumed.
 
-**6. Is a region an entity or a value?** It has an id and a name and nothing
+**5. Is a region an entity or a value?** It has an id and a name and nothing
 else, and exists only to be referenced and validated. Thin either way, and worth
 deciding before something hangs off it.
