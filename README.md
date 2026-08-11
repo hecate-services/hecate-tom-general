@@ -48,6 +48,7 @@ other client, and nothing of ours.
 | Document | What it settles |
 |----------|-----------------|
 | [DECISIONS.md](DECISIONS.md) | What has been settled, when, and why |
+| [design/DESIGN_WORLD.md](design/DESIGN_WORLD.md) | What the world service owns, and the fifteen events it emits |
 | [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) | The goods that can be traded |
 | [design/DESIGN_HARBOURS.md](design/DESIGN_HARBOURS.md) | The eight harbours and the routes between them |
 | [design/DESIGN_FACTORIES.md](design/DESIGN_FACTORIES.md) | Factories, recipes, and recipes as cargo |
