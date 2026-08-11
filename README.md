@@ -57,6 +57,7 @@ other client, and nothing of ours.
 |----------|-----------------|
 | [DECISIONS.md](DECISIONS.md) | What has been settled, when, and why |
 | [design/DESIGN_ROLES.md](design/DESIGN_ROLES.md) | Magnate, trader, mayor, and why they are one install |
+| [design/DESIGN_MARKET.md](design/DESIGN_MARKET.md) | The price mechanism, what the probes found, and why the world is half flat |
 | [design/DESIGN_MONEY.md](design/DESIGN_MONEY.md) | Where money comes from, where it goes, and why tax alone drains the world |
 | [design/DESIGN_WORLD.md](design/DESIGN_WORLD.md) | What the world service owns, and the nine events it emits |
 | [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md) | The goods that can be traded |
