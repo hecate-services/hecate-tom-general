@@ -87,12 +87,21 @@ recipe at a time. See [What was added](#what-was-added).
 - A cycle needs no separate check. It fails the rule above on its own, because a
   cycle never resolves, and the error names the inputs that went missing.
 
-## Not a factory
+## The shipyard, which turned out to be an ordinary factory
 
-A **shipyard**, turning timber and iron and cordage and canvas into a hull, is
-the strongest possible link between the Harbour Master and the Trader. It is not
-a factory, because its output is not a good. Keep it a separate thing so the
-recipe schema stays simple.
+This section used to say a shipyard was **not** a factory, because its output is
+not a good, and to keep it separate so the recipe schema stayed simple.
+
+That was a choice presented as a fact, and it is the choice that forced the
+replacement hull to be free, since a thing that is not a good has no market and
+therefore no price. Reversed 2026-08-11: **a hull is a good**, a shipyard is an
+ordinary factory, and the recipe schema needs no change at all.
+
+    build_hull: teak 40, ironwork 8, cordage 4, sailcloth 6 -> hull 1, 30 ticks
+
+It also gives teak, oak and pine the consumer they have been waiting for since
+they went in. One new thing is needed and only one: a hull is a good that cannot
+be carried. See [DESIGN_LOSS.md](DESIGN_LOSS.md).
 
 ## Settled
 

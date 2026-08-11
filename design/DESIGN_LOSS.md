@@ -2,7 +2,13 @@
 
 *This exists so that a wreck is a setback rather than a wall.*
 
-**Status:** replacement hull agreed 2026-08-11. Insurance written down, not built.
+**Status:** replacement hull built 2026-08-11 as a **stopgap**. Hulls as goods,
+insurance, and the ways back into business are written down and not built.
+
+**The rule this whole document serves: NO DEAD ENDS.** A state a player can reach
+with no action available to them is a bug, not a difficulty setting. The floor
+must not be zero. It is testable in that form: every reachable state has at least
+one thing you can do.
 
 ## What a wreck costs
 
@@ -15,19 +21,65 @@ nothing could ever happen again, and the page sat there with a fully armed helm
 refusing every press. A game that can only end in a dead stop leaves a player
 holding a broken toy rather than a defeat.
 
-## Why the replacement is free
+## Why the replacement is free, for now
 
-Not generosity. **There is nowhere to get a price from.**
+Not generosity, and not permanent. **There was nowhere to get a price from.**
 
 Price is always circumstantial: it comes out of a market or it does not exist.
-There is no market in hulls, so any figure written down would be the one invented
-number in a game that has spent a long day refusing to invent them.
+There was no market in hulls, so any figure would have been the one invented
+number in a game that has refused to invent them.
 
-The loss is already real. A full hold bought at Macao and lost off the Cape is a
-serious sum, and the ninety seconds are gone too.
+**A hull should be a good, and then there is a price.** A shipyard is then an
+ordinary factory and nothing needs inventing:
 
-**When hulls have a market, the replacement should cost money**, and at that
-point the number comes from the same place every other number does.
+    build_hull: teak 40, ironwork 8, cordage 4, sailcloth 6 -> hull 1, 30 ticks
+
+That was a choice made and then reasoned around. The earlier note that "a
+shipyard is not a factory, because its output is not a good" was a decision, not
+a fact, and it is the decision that forced everything after it. Making a hull a
+good collapses the special case, gives **teak, oak and pine the consumer** they
+have been waiting for since the raw materials tier went in, and turns "here, have
+one" into "buy one", which is better.
+
+It needs exactly one new thing: **a hull is a good that cannot be carried.** You
+do not stow a ship in a ship. That is one boolean, and unlike `contraband` or
+`money` or `bulk` it is a genuine physical fact about the thing, in the same
+family as fragile and perishable.
+
+**The free hull stays until the magnate exists.** Buying a replacement is the
+terminal wall again for a player who is broke, and a shipless house earns by
+being a magnate: works ashore, producing and selling. Factories as harbour state
+do not exist yet. Until they do, "buy a hull" means a wreck can still end the
+game, which is the fault this is fixing.
+
+That ordering is written down deliberately, because a free hull is exactly the
+kind of temporary thing that quietly becomes permanent.
+
+## Getting back into business
+
+A player can be broke without a wreck: a bad voyage, a market that moved, a
+harbour that banned what was in the hold. The rule above says there must always
+be a way back, and it should be a way that reads as part of the world rather than
+as a refund.
+
+**Freight is the purest one.** Carry another house's cargo for a fee. It needs no
+capital at all, only a hull and time, and it is exactly what the Ship Master role
+was for before it was folded into the Trader. A player with nothing but a ship is
+a carrier, which is a real trade and was most people's.
+
+**Bottomry is the period one.** A loan secured on the ship, repaid at a high rate
+on safe arrival and **forgiven if she sinks**. It is the actual instrument of the
+era and the direct ancestor of marine insurance, so it shares machinery with the
+policies above: a contract between two houses, verified against the ocean's own
+record of what happened.
+
+**Wages ashore are the true floor.** A house with nothing works for a port. Dull
+on purpose: it should be the least attractive way back, and it should always be
+available, because it is what makes the floor not zero.
+
+What to avoid: a handout with no story in it, and a fresh start that wipes the
+record. Both turn a defeat into an inconvenience, and a defeat that costs nothing
+was never a risk.
 
 ## Insurance, written down and not built
 
