@@ -6,8 +6,13 @@ their laptops on the same afternoon.*
 **Status:** stormed 2026-08-11, then cut down the same day. Nothing built beyond
 the model it will own. Five hotspots at the bottom, all open.
 
-Ten events, not fifteen. Recipes turned out to be permanent, which deleted three
-of them and the whole edition mechanism with them.
+Eleven events, not fifteen. Recipes turned out to be permanent, which deleted
+three of them and the whole edition mechanism with them.
+
+Two of the eleven are still doubtful. `good_withdrawn_v1` and `harbour_closed_v1`
+are the only destructive things left, and withdrawing a good somebody is holding
+forty tons of is the one change that really would break a running game. The world
+may want to be strictly append-only.
 
 `hecate-tom-world` owns reference data: what goods exist, what ports exist, what
 can be made from what. It publishes facts. **Nobody links it.** Harbours and
@@ -35,8 +40,8 @@ about a game in progress.
 
 Commands are the present tense of each, with the usual handlers:
 `introduce_good_v1` and `maybe_introduce_good`, `open_harbour_v1` and
-`maybe_open_harbour`, `seal_edition_v1` and `maybe_seal_edition`. One desk per
-capability.
+`maybe_open_harbour`, `publish_recipe_v1` and `maybe_publish_recipe`. One desk
+per capability.
 
 There was a `good_renamed_v1` and a `good_recharacterised_v1` and they were the
 same event twice. The id is the identity; everything else is display. One
