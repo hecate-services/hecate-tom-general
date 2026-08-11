@@ -67,12 +67,18 @@ trade.
 
 **Public works.** Dredging, a lighthouse, harbour defence.
 
-**Public works must consume goods, not money.** Timber, ironwork, stone. Tax
-removes money from the game, and a mayor who spends tax revenue puts it back.
-Spending materials keeps the money gone and generates trade on top.
+**The mint.** Only a mayor may strike coin. Tax buys silver on the open market
+and the mint turns it into money, which is what makes the seat worth holding: he
+had powers but no engine, and this is the engine. See
+[DESIGN_MONEY.md](DESIGN_MONEY.md).
 
-Tax is only half a loop, and on its own it drains the world to nothing. See
-[DESIGN_MONEY.md](DESIGN_MONEY.md) for the other half.
+**The tax rate.** Which was the Harbour Master's lever and was cut with him,
+because a rentier setting his own toll is not a game. An elected mayor standing
+on a rate and answering for it is a different thing.
+
+**Public works consume goods**, bought with coin the mayor struck. Timber,
+ironwork, stone. That is how new money reaches circulation and how the works get
+built, in one act.
 
 ## The empty seat
 
@@ -88,7 +94,19 @@ This is also why a third role is affordable now and was not before. The harbour
 is infrastructure, so the seat can stand empty. When the harbour was a player,
 an absent player meant a dead port.
 
-## Elections
+## Elections are fought on policy
+
+**A candidate stands on a platform**, and financial policy is on it like
+everything else: the tax rate, the mint stance, what is banned, what gets built.
+Magnates vote for the policy they want, not the person they like.
+
+**The platform is binding.** Winning enacts it, and changing it needs another
+election. The mayor's discretionary acts happen inside that frame: which charter
+to grant, whether to admit the plague ship, which work to raise next.
+
+The alternative is an advisory platform, which lets a mayor simply lie. That is
+realistic and it needs a recall mechanism, so it is a second system rather than
+the first one.
 
 The port runs the election, because it is neutral, always on, and the magnates
 based there are exactly its register of voters. Houses cast votes. The winner's
@@ -96,6 +114,17 @@ house gains the office.
 
 So the mayor's game logic lives in the house and only the authority comes from
 the port.
+
+## The loop that closes it
+
+**The magnates vote. The traders can sail elsewhere.**
+
+A port that taxes hard and bans freely mints more coin and builds more works, and
+loses the traffic that made both possible. The magnates who elected that mayor
+feel it first, and they elect somebody else.
+
+Nobody designed that. It falls out of who holds which power, which is the sign
+the roles are cut in the right places.
 
 ## Open
 
@@ -116,9 +145,11 @@ the granter or it does not, and that changes how much one is worth.
 
 ## What died with the Harbour Master
 
-Setting the tax rate, which is now a fixed sink and nobody's lever. Owning the
-market, which the port owns. Building berths and dredging as a private
-investment, which becomes a public work if it returns at all.
+Owning the market, which the port owns now. Building berths and dredging as a
+private investment, which becomes a public work if it returns at all.
+
+The tax rate came back, but as something a candidate stands on rather than a dial
+its holder turns for his own profit.
 
 The Harbour Master was a rentier whose game was taxing other people's work. The
 magnate is a producer and the mayor is a politician, and neither of them collects
