@@ -19,7 +19,7 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-11 | How do peers know they share a world? | **`tom_world:digest/1`**, a sha256 over the world's content. Exchange it, refuse to trade with a peer whose world is not yours |
 | 2026-08-11 | `regions` or `origins` on a good? | **`origins`.** A harbour's `region` is where it is; a good's `origins` are where it comes from. Different relations, so different words |
 | 2026-08-11 | Do we have ores? | **Two.** Silver ore and gold ore, both refined with Chinese quicksilver. The other six metals crossed oceans as metal, so they get none |
-| 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-shared` owns the map a good is and the map a harbour is. They live in `hecate-tom-world/priv/worlds/macao.world`. There is no closed vocabulary left in it |
+| 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-world` owns the map a good is and the map a harbour is. They live in `hecate-tom-world/priv/worlds/macao.world`. There is no closed vocabulary left in it |
 | 2026-08-10 | Where does it all run? | Ocean on `msi00`, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
 
 ## 2026-08-10: two player roles, not three
