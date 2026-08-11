@@ -67,10 +67,12 @@ trade.
 
 **Public works.** Dredging, a lighthouse, harbour defence.
 
-**Public works must consume goods, not money.** Timber, ironwork, stone. Tax is a
-sink that removes money from the game to hold inflation down; a mayor who spends
-tax revenue puts it back and the sink leaks. Spending materials keeps the money
-gone and generates trade on top.
+**Public works must consume goods, not money.** Timber, ironwork, stone. Tax
+removes money from the game, and a mayor who spends tax revenue puts it back.
+Spending materials keeps the money gone and generates trade on top.
+
+Tax is only half a loop, and on its own it drains the world to nothing. See
+[DESIGN_MONEY.md](DESIGN_MONEY.md) for the other half.
 
 ## The empty seat
 
