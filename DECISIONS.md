@@ -29,6 +29,8 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-11 | `regions` or `origins` on a good? | **`origins`.** A harbour's `region` is where it is; a good's `origins` are where it comes from. Different relations, so different words |
 | 2026-08-11 | Do we have ores? | **Two.** Silver ore and gold ore, both refined with Chinese quicksilver. The other six metals crossed oceans as metal, so they get none |
 | 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-world` owns the map a good is and the map a harbour is. They live in `hecate-tom-world/priv/worlds/macao.world`. There is no closed vocabulary left in it |
+| 2026-08-11 | Is every key on the wire a binary? | **On the way out, yes. On the way in, no, and no contract can make it so.** macula encodes a binary key as a CBOR text string and `binary_to_existing_atom`s it back, so a key arrives as an **atom** or as **`{text, Binary}`** depending on what the receiving node has loaded. Each service folds inbound payloads back to binary keys at its own edge. See below |
+| 2026-08-11 | How does a refusal carry its reason? | **As a successful reply, `{ok, #{<<"refused">> => Reason}}`.** ~~`{error, Binary}`~~ loses the reason: macula renders it into a BOLT#4 `detail` the SDK's caller path drops, so every refusal arrives as one `{call_error, 15, unknown_error}`. Changed on the **harbour** (producer) and the **house** (consumer). The ocean keeps `{error, _}`, because nothing reads its reasons |
 | 2026-08-10 | Where does it all run? | Ocean on `msi00`, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
 
 ## 2026-08-10: two player roles, not three
@@ -64,3 +66,69 @@ the Trader.
 Macao's trade included them. They are excluded from the goods, recorded here so
 the absence reads as a decision rather than an oversight, and so nobody adds them
 back believing they were forgotten.
+
+## 2026-08-11: what the wire actually does, found by running it
+
+The three services were built in parallel against a frozen contract and none of
+them had spoken to a station. Running all four together for the first time broke
+on two things the contract asserts and the wire does not honour. Both fail
+**silently**: every service reports perfect health and nothing works.
+
+### A key does not arrive in the shape it was sent
+
+The contract says *every map key on the wire is a BINARY*. That is true of what a
+sender writes and false of what a receiver gets.
+
+macula encodes a binary key as a CBOR text string (major 3). On the way back in,
+`macula_frame:from_wire_envelope/1` runs `binary_to_existing_atom` over every
+key: one whose name is already in the **receiving node's** atom table comes back
+as an **atom**, one whose name is not comes back as **`{text, Binary}`**. A
+single receipt carries both — `coin` as an atom beside `{text, <<"price_after">>}`.
+
+The nasty part is that this is a property of the receiver, not of the message.
+Load any module that happens to mention the atom `good` and every payload
+afterwards is shaped differently, with no version change and no error.
+
+**Decision: each service folds inbound payloads back to binary keys at its own
+edge, and nowhere else.** No shared library, no change to macula. The fold mints
+no atom — it only ever unmakes one the decoder already had, so the atom table
+cannot be walked from the wire.
+
+| Service | Fold | Applied at |
+|---|---|---|
+| harbour | `tom_wire:accept/1` | `tom_port:ask/1` (all seven desks), and the handover reply in `tom_hand_over_ship` |
+| ocean | `tom_wire:accept/1` | `take_ship_to_sea`, `tell_voyage`, and the reply in `tom_ocean_mesh` |
+| house | `tom_wire_accept:payload/1` | every reply in `tom_wire_macula:call/3`, every fact in `watch_ports` |
+
+### A refusal's reason does not survive `{error, Binary}`
+
+macula turns a handler's `{error, Reason}` into a BOLT#4 frame with code `0x0F`,
+renders the reason into the frame's `detail`, and the SDK's caller path reads
+only `code` and `name`. `quay_empty`, `hold_full`, `not_here`, `not_yours`,
+`ship_consigned`, `godown_full`, `not_in_hold`, `bad_destination` and
+`already_bound` all arrive at a house as one indistinguishable
+`{call_error, 15, unknown_error}`, so a player is told an order failed and never
+why.
+
+**Decision: a refusal travels as a successful reply carrying its reason.**
+
+```erlang
+{ok, #{<<"refused">> => <<"hold_full">>}}
+```
+
+The harbour's desks still return `{error, Binary}` internally, because that is
+what a refusal is to a port; `tom_wire:answer/1` translates at the edge, once.
+The house reads the shape in `tom_wire_macula:classify/1` and still calls it
+**refused**, so it is still final and the retry loop is unchanged.
+
+**Which side changed:** the **harbour** (producer) and the **house** (consumer).
+The **ocean is unchanged** and still answers `{error, <<"malformed_handover">>}`,
+deliberately: a malformed handover is a sender with a bug, the custody rule
+forbids refusing a well-formed one, and every consigner retries on anything that
+is not `held`, so that reason has no reader.
+
+**The alternative, not taken.** Carrying `detail` through to the caller in
+`macula_station_link:on_frame/2` is one line and is arguably the better fix. It
+changes the published SDK the rest of the fleet runs, and it would put this
+game's contract on an unreleased macula. Worth doing in macula on its own merits;
+this game does not wait for it.
