@@ -6,15 +6,27 @@ dial.*
 
 **Status:** agreed 2026-08-11. Silver only to begin with. Nothing built.
 
-## The loop
+## Coinage is free until somebody takes it
 
-1. Trades at a port pay **tax**, in coin, to the mayor's treasury.
+**The default is free coinage.** In a port with no mayor, anyone who brings
+silver may have it struck. That is how coinage worked before sovereigns asserted
+a monopoly over it, and it is what a free port is.
+
+**A mayor may reserve the mint to himself.** Then the loop becomes:
+
+1. Trades at the port pay **tax**, in coin, to the mayor's treasury.
 2. The mayor **buys silver** on the open market with it, competing with everyone
    else who wants silver.
 3. He **strikes** that silver into coin.
 4. He **spends** the coin on public works, and it is back in circulation.
 
-Only a mayor may mint. A port with no mayor makes no money.
+So the seat is a trade rather than a gift. Electing a mayor means giving up free
+coinage in exchange for public works and policy, and **whether to reserve the
+mint is a plank he stands on**. A candidate can run on keeping coinage free.
+
+**And a monopoly leaks.** Anyone can carry silver to the nearest free port and
+strike it there. That is capital flight, it is correct, and it is the check on a
+mayor who reserves the mint and then strikes too little or too much.
 
 ## Tax is not a sink
 
@@ -68,15 +80,20 @@ can sail elsewhere.** A port that taxes hard mints more coin and builds more
 works and loses the traffic that made either possible. The magnates who elected
 that mayor feel it first, and they elect somebody else.
 
-## Two failure modes
-
-**A world with no mayors creates no money.** Genesis coin only, slowly shrinking
-as coin is melted. So either genesis seeds enough to survive an ungoverned start,
-or the first election matters more than anything else in the game.
+## One failure mode, and it used to be two
 
 **A mayor can refuse to mint.** That is a credit crunch as a political act. It is
-a feature rather than a bug, and it is real power over everyone else's ability to
-trade, and somebody will do it.
+real power over everybody else's ability to trade and somebody will use it. It is
+also survivable, because the silver can go to a free port instead.
+
+The other one is gone. "A world with no mayors creates no money" was true while
+minting was the mayor's alone. With free coinage as the default, an ungoverned
+world makes money perfectly well, and the first election stops being the most
+important thing that ever happens.
+
+The stabiliser is untouched and works better with free coinage, because more
+actors respond to the same signal and every one of them still only strikes while
+silver sits below par.
 
 ## Later
 
@@ -97,14 +114,17 @@ grow.
 
 ## Open
 
-**Who may use a mint.** Anyone bringing silver, or only those the mayor permits.
-The second is a much sharper political weapon.
+**How much coin genesis seeds.** Pick a per-house starting purse and let the total
+follow the number of players, rather than choosing a world total, which is
+meaningless until it can be watched moving.
 
-**What seigniorage is taken in**, if the mayor is not simply buying the metal
-outright.
+**Whether a reserved mint needs a building at all**, or whether reserving it is
+purely a permission. A permission is one rule; a building is a rule and a
+construction.
 
-**Which ports begin with a mint**, and whether a mayor can raise one anywhere.
-Potosí, Mexico City, Goa, Lisbon and Seville all had real ones.
-
-**How much coin genesis seeds**, which is the one number here somebody has to
-choose, and it decides whether an ungoverned world can start at all.
+Two questions that were open here have dissolved rather than been answered.
+**Who may use a mint** and **what seigniorage is taken in** were both leftovers
+from a version where people brought metal to a mayor's mint to be struck for a
+fee. Under free coinage they strike their own, and under a reserved mint the
+mayor buys the metal outright and his profit is the gap between what he paid and
+what it strikes into. There is no fee to design either way.

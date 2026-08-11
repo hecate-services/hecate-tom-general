@@ -67,9 +67,11 @@ trade.
 
 **Public works.** Dredging, a lighthouse, harbour defence.
 
-**The mint.** Only a mayor may strike coin. Tax buys silver on the open market
-and the mint turns it into money, which is what makes the seat worth holding: he
-had powers but no engine, and this is the engine. See
+**The mint.** Coinage is **free by default**: in an ungoverned port anyone with
+silver may strike it. A mayor's power is to **reserve** the mint to himself, and
+then tax buys silver and the mint turns it into money, which is the engine the
+seat was lacking. Reserving it is a plank he stands on, and a monopoly leaks,
+because silver can always be carried to the nearest free port. See
 [DESIGN_MONEY.md](DESIGN_MONEY.md).
 
 **The tax rate.** Which was the Harbour Master's lever and was cut with him,
@@ -86,7 +88,7 @@ built, in one act.
 nothing built, which makes an ungoverned port a **free port**.
 
 That is Macassar, exactly as it was: the place where whatever was banned
-elsewhere got sold. So an empty seat is not a gap in the game, it is a kind of
+elsewhere got sold, and where anyone with silver could strike their own coin. So an empty seat is not a gap in the game, it is a kind of
 port, and the absence of a player is part of the fiction rather than a hole in
 it.
 
