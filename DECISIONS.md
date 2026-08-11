@@ -31,7 +31,15 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-10 | Are goods and harbours code or data? | **Data.** `tom-world` owns the map a good is and the map a harbour is. They live in `hecate-tom-world/priv/worlds/macao.world`. There is no closed vocabulary left in it |
 | 2026-08-11 | Is every key on the wire a binary? | **On the way out, yes. On the way in, no, and no contract can make it so.** macula encodes a binary key as a CBOR text string and `binary_to_existing_atom`s it back, so a key arrives as an **atom** or as **`{text, Binary}`** depending on what the receiving node has loaded. Each service folds inbound payloads back to binary keys at its own edge. See below |
 | 2026-08-11 | How does a refusal carry its reason? | **As a successful reply, `{ok, #{<<"refused">> => Reason}}`.** ~~`{error, Binary}`~~ loses the reason: macula renders it into a BOLT#4 `detail` the SDK's caller path drops, so every refusal arrives as one `{call_error, 15, unknown_error}`. Changed on the **harbour** (producer) and the **house** (consumer). The ocean keeps `{error, _}`, because nothing reads its reasons |
-| 2026-08-10 | Where does it all run? | Ocean on `msi00`, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
+| ~~2026-08-10~~ **revised 2026-08-11** | Where does it all run? | ~~Ocean on `msi00`~~, eight harbours two apiece on `beam00` to `beam03`, trader on Raf's workstation. Each harbour dials a different station. **The ocean is gone; there is nothing on `msi00`.** See [design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) |
+| 2026-08-11 | Is there a service for the sea? | **No. `hecate-tom-ocean` is dissolved.** An ocean is a place, and a place is not a party. Made a service, it had to become one, and grew custody, an archive and an outbox to suit. See [design/DESIGN_VOYAGE.md](design/DESIGN_VOYAGE.md) |
+| 2026-08-11 | What was missing? | **The voyage, as a live thing.** She was a record in another process's state, so every question about a ship under way had to be asked of the sea, and the sea grew one answer per question |
+| 2026-08-11 | Where does a passage run? | **At the port she sailed from, for the leg she is on.** Nothing in the domain has a claim on hosting her, so the choice is operational, and operationally: no singleton, one hop per leg, and `hop` becomes geography instead of a custody counter |
+| 2026-08-11 | Custody, or hosting? | **Two words, never merged again.** The voyage is the custodian of the hull; the port is only the host of the process. A port hosting a ship four hundred leagues away is not a lie about where she is |
+| 2026-08-11 | How far does one voyage go? | **One leg.** The house orders the next port at each stop. The route graph already chains, so Macao to Lisbon is three legs. No itineraries, no path-finding, and every stop is a market and a decision |
+| ~~2026-08-11~~ **revised same day** | Who owns "how long"? | ~~The ocean~~ → **distance is the world's, duration is the passage's.** [DESIGN_PLACES.md](design/DESIGN_PLACES.md) was right that a passage time is weather and hull, but distance was never separated from duration, so both went to the sea and the map got neither |
+| 2026-08-11 | Where do measure and exposure live? | **On a leg, not a route.** A route already carries `via`, so it is already segmented. Length is then derived, adding a waypoint recomputes it, and the dangerous part can be the strait rather than the whole crossing |
+| 2026-08-11 | What belongs in the world? | **What everyone must agree on. The service holds the computation.** The market already worked this way by accident: `tom_crossing`'s eleven constants are agreements, the bisection is the harbour's business. Leagues, exposure, tempo and hazard are the same |
 
 ## 2026-08-10: two player roles, not three
 
@@ -132,3 +140,27 @@ is not `held`, so that reason has no reader.
 changes the published SDK the rest of the fleet runs, and it would put this
 game's contract on an unreleased macula. Worth doing in macula on its own merits;
 this game does not wait for it.
+
+## 2026-08-11: dissolving the ocean is smaller than it sounds
+
+Reading the harbour before rewriting it turned a rebuild into a rewiring.
+
+`tom_hand_over_ship` is already one process per consigned hull that retries every
+five seconds forever, resumes at boot from its own record, and sends a
+byte-identical payload every attempt so the receiver dedupes on `{ship, hop}`. It
+is generic over a destination and a procedure, and it happens to point at the
+ocean. `tom_receive_ship` already takes a hull idempotently on the other side.
+And `tom_sail_ship:consigned/4` freezes the berth and keeps the hull in the
+port's own `ships` map until the receiver says held.
+
+So the harbour already does port-to-port handover, in both directions, durably,
+with retry, and already holds a hull it has consigned. **The ocean is a delay
+inserted between two halves that already exist**, and what the harbour lacks is
+exactly what the ocean owned: a clock and a fate.
+
+The knocking comes back with it, and that is not a regression. It was ugly as a
+worker pool the sea ran per undelivered landfall, and ugly again as an outbox
+with a cursor and a `taken` flag, because in both shapes a delivery obligation
+was a side table on a central actor. As the ship's own behaviour there is no side
+table, because there is nothing beside her: she reaches a dark port, lies in the
+roads, and waits for them to open.
