@@ -5,7 +5,7 @@ is a deliberate act rather than a slow drift.*
 
 | Date | Question | Decision |
 |------|----------|----------|
-| 2026-08-10 | How many player roles? | **Two.** Harbour Master and Trader. The Trader owns and maintains the fleet as well as trading the goods |
+| ~~2026-08-10~~ **revised 2026-08-11** | How many player roles? | ~~Two: Harbour Master and Trader~~ → **Three: Magnate, Trader, Mayor**, in one install. Affordable again because the harbour became infrastructure, so a mayor's seat may stand empty and the port still runs |
 | 2026-08-10 | Which goods can be traded? | Forty five trade goods, recorded in [design/DESIGN_GOODS.md](design/DESIGN_GOODS.md). Sixty seven since the raw materials tier |
 | 2026-08-10 | Are slaves tradeable? | **No.** Historically part of Macao's trade, excluded by decision |
 | 2026-08-10 | What is `tom-general`? | Plans, designs, guides, decisions. No code |
@@ -14,6 +14,12 @@ is a deliberate act rather than a slow drift.*
 | 2026-08-10 | Application and module naming | App name agrees with the repo (`hecate_tom_world`). Modules take the short `tom_` prefix, because they appear at every call site in every service |
 | 2026-08-10 | What hazards does the ocean carry? | Travel, storms and pirates. **The word "dragons" is retired** |
 | 2026-08-10 | What does a harbour trade? | **Everything.** Every harbour has a market where every good buys and sells at the going price. A harbour declares only what is plentiful there; demand is the complement and is never written down |
+| 2026-08-11 | **Is price ever fixed data?** | **No. Price is always circumstantial.** A law. Nothing in world data is ever a price, and anything that looks like one is a market fact in the wrong file |
+| 2026-08-11 | Can a good be withdrawn or a harbour closed? | **No.** The world is strictly append-only. Withdrawing a good somebody holds forty tons of is the one change that would break a running game |
+| 2026-08-11 | Can a recipe be retuned or retired? | **No.** You cannot un-invent a process. A better one is a new recipe beside the old, and the old keeps working for whoever holds a copy |
+| 2026-08-11 | Is a harbour a player or infrastructure? | **Infrastructure.** A port's market must be one number everyone agrees on and must not go dark when somebody shuts a laptop. One service per port, owned by nobody |
+| 2026-08-11 | What replaces the Harbour Master? | **Magnate** (makes) and **Mayor** (permits), alongside the Trader (moves). The Harbour Master was a rentier taxing other people's work; tax is now a sink and nobody's lever |
+| 2026-08-11 | How many services does a player install? | **One**, `hecate-tom-house`. One service per **owner**, not one per role. A mayor is elected by magnates and is one of them, so he cannot live in a different binary |
 | 2026-08-11 | Do goods carry a `jobs` enum? | **No, deleted.** `contraband` is a harbour's decision, `money` is the medium of exchange, `bulk`/`floor`/`trap` are price facts, `exclusive` is derived. Only `fragile` and `perishable` were real, and both want a number, so they return with storms and time |
 | 2026-08-11 | How are things named on the mesh? | **MRI**, `mri:class:{realm}/tom/{kind}/{name}`, built with `macula_mri`. World-file names are local and never leave the node as-is |
 | 2026-08-11 | How do peers know they share a world? | **`tom_world:digest/1`**, a sha256 over the world's content. Exchange it, refuse to trade with a peer whose world is not yours |

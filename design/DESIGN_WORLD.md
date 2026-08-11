@@ -3,16 +3,16 @@
 *This exists so that adding a good does not require eight people to redeploy
 their laptops on the same afternoon.*
 
-**Status:** stormed 2026-08-11, then cut down the same day. Nothing built beyond
-the model it will own. Five hotspots at the bottom, all open.
+**Status:** stormed 2026-08-11, then cut down twice the same day. Nothing built beyond
+the model it will own. Four hotspots at the bottom, all open.
 
-Eleven events, not fifteen. Recipes turned out to be permanent, which deleted
-three of them and the whole edition mechanism with them.
+Nine events, not fifteen. Recipes turned out to be permanent, which deleted three
+of them and the whole edition mechanism with them, and then goods and harbours
+turned out to be permanent too, which deleted two more.
 
-Two of the eleven are still doubtful. `good_withdrawn_v1` and `harbour_closed_v1`
-are the only destructive things left, and withdrawing a good somebody is holding
-forty tons of is the one change that really would break a running game. The world
-may want to be strictly append-only.
+**The world is strictly append-only.** Nothing that exists can stop existing.
+Withdrawing a good somebody is holding forty tons of was the one change that
+would really have broken a running game, so it is not a thing that can happen.
 
 `hecate-tom-world` owns reference data: what goods exist, what ports exist, what
 can be made from what. It publishes facts. **Nobody links it.** Harbours and
@@ -31,11 +31,9 @@ about a game in progress.
 | `good_introduced_v1` | A good can be traded. Carries its id, name, origins and character |
 | `good_described_v1` | Its display name or its line of character changed. Its identity did not |
 | `good_origins_revised_v1` | The regions it comes out of changed |
-| `good_withdrawn_v1` | It can no longer be traded. Refused while any recipe eats it or any harbour produces it |
 | `harbour_opened_v1` | A port exists on the map, in a region. Carries its name and character |
 | `harbour_described_v1` | Its display name or line of character changed |
 | `harbour_produce_revised_v1` | What is plentiful there changed, so what is cheap there changed |
-| `harbour_closed_v1` | The port is off the map. Refused while it is the only source of a good |
 | `recipe_published_v1` | A process was invented. Carries inputs, outputs and how long a batch takes. **This is the only recipe event there will ever be** |
 
 Commands are the present tense of each, with the usual handlers:
@@ -102,18 +100,13 @@ All open. Each one changes what gets built.
 not engineering. And if recipes are inventions rather than decrees, could players
 invent them in play rather than receiving them from a curator?
 
-**2. Where does a refusal go?** `good_withdrawn` can be refused because a recipe
-still eats it. A refusal is not an event, so the steward needs to be told, which
-means the command side needs a reply path and not just a stream.
+**2. Do harbours belong here at all?** The map of twenty nine ports is reference
+data and clearly does. Which house is based where, and who holds the mayor's
+seat, is a running port's business and clearly does not.
 
-**3. Do harbours belong here at all?** The map of twenty nine ports is reference
-data and clearly does. "Raf runs Macao this game" is session state and clearly
-does not. The line is obvious in those two cases and needs stating for the ones
-in between.
-
-**4. Genesis idempotency.** Replaying the file twice must not double the world.
+**3. Genesis idempotency.** Replaying the file twice must not double the world.
 A founding guard, probably, but it should be named rather than assumed.
 
-**5. Is a region an entity or a value?** It has an id and a name and nothing
+**4. Is a region an entity or a value?** It has an id and a name and nothing
 else, and exists only to be referenced and validated. Thin either way, and worth
 deciding before something hangs off it.

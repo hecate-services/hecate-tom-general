@@ -16,11 +16,17 @@ involvement. Do not read a station name as a place in the story.
 |------|-------|---------|
 | `hecate-tom-ocean`, one instance | `msi00.lab` | podman, Quadlet unit, `podman auto-update` |
 | `hecate-tom-harbour`, eight instances | `beam00.lab` to `beam03.lab`, two per node | docker, watchtower |
-| `hecate-tom-trader`, one instance | Raf's workstation | whatever is convenient. It dials out |
+| `hecate-tom-world`, one instance | with the realm | to be decided |
+| `hecate-tom-house`, one per player | the player's own machine | whatever is convenient. It dials out |
 
 Each harbour dials a **different** `macula-station`, so that eight harbours are
 genuinely separate peers on the mesh rather than eight processes sharing one
 station and calling it distributed.
+
+**The harbours are infrastructure, not players.** A port's market has to be one
+number everyone agrees on and it must not go dark when somebody shuts a laptop.
+What a player installs is `hecate-tom-house`, which holds their works, their
+ships and their seat if they hold one.
 
 The eight harbours are placed around the world in the game: North America, South
 America, Europe, Asia. That is the map, and it costs nothing.
