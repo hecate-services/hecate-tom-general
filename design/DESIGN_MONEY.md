@@ -1,71 +1,102 @@
 # Money
 
-*This exists so that the amount of money in the world is something we watch on
-purpose rather than something we discover has gone to zero.*
+*This exists so that the amount of money in the world is set by geology and by
+what people do with it, and not by anybody's dial.*
 
-**Status:** open, 2026-08-11. Nothing decided.
+**Status:** proposed 2026-08-11. Silver only to begin with. Nothing built.
 
-## The hole this was written to fill
+## Coin is struck from silver
 
-Tax removes money from the game. Nothing was putting any back, so the world
-drains to nothing and stops.
+Money enters the world when somebody takes bullion to a mint and has it struck.
+It leaves when coin is melted back into bullion.
 
-## Where money comes in
+Both are **recipes**, so there is no new machinery at all:
 
-**A town buys.** Every port has a hinterland that eats: the city needs rice, the
-temples need incense, the yards need timber. When a town buys pepper off a
-trader, money enters the player economy. When a player buys silk off a town,
-money leaves it.
+```erlang
+strike_silver_coin : silver -> silver_coin
+melt_silver_coin   : silver_coin -> silver
+```
 
-So the supply moves with the **net balance of trade between players and towns**,
-and tax pulls one way on top.
+The ratio is a physical fact, not a price: a coin is a standard weight of silver
+with a stamp on it. What that coin is *worth* is whatever the market says, which
+is the law holding.
 
-Neither of those is a price, so the law survives. A town wanting fifty tons of
-rice this tick is a quantity. What it pays is whatever the market says.
+## Why this is better than a faucet
 
-## The rule that follows
+**The supply is limited by geology.** Metal comes from mines. Japanese silver
+comes out of the ground at Nagasaki and Hirado. American silver does not exist
+until ore meets quicksilver, and quicksilver comes from China. Nobody tunes
+anything.
 
-**Towns must be net buyers by roughly the tax take.**
+**And it regulates itself.** When coin is scarce, coin is worth more than the
+metal in it, so striking pays and the supply grows. When coin is abundant, silver
+is worth more as metal than as money, so striking stops and coin goes back into
+the crucible and the silver sails east and stays there. That is exactly what
+happened to the world's silver in this period, and it arrives here as a
+consequence rather than as a rule.
 
-Consume exactly what they sell and tax drains the world to zero. Consume far
-more and money floods in and prices climb.
+So **the crucible is the sink.** Not a burn rule, not a number anybody chose. A
+player decision driven by what metal is worth that week.
 
-One dial, and a measurable one: total money in the world, per tick. It does not
-have to be right in advance. It has to be visible.
+## Minting is the mayor's power
 
-## Do not chase exactness
+It is a sovereign prerogative and it always was.
 
-Mild drift is harmless. Everybody's money up five percent and prices up five
-percent is nothing happening. What hurts is a saver whose hoard quietly halves,
-and that needs sustained one-directional drift, not noise.
+It is also what makes the seat worth holding. Before this a mayor had powers but
+no engine: bans and charters cost him nothing and earned him nothing, and public
+works cost materials he had no way of getting. **Seigniorage is his income.** He
+raises the mint as a public work, takes a cut of what passes through it, and that
+cut pays for the next work.
 
-Watch the number, correct with how much the towns eat, stop there.
+And it puts money on the map. A port with no mayor has no mint, so silver must be
+carried somewhere governed before it becomes money.
 
-## The version the setting is begging for
+**Genesis must seed a few mints**, or the world begins with no money and no way
+to make any. Potosí, Mexico City, Goa, Lisbon and Seville all had real ones.
 
-**Money could just be silver.**
+## Debasement, later
 
-Then there is no faucet to tune. Money enters when silver is mined at Nagasaki
-and Hirado, and when ore meets quicksilver at Acapulco and Callao. It leaves when
-it is taxed, and it leaves when it reaches China and stays, which is what
-actually happened to the world's silver in this period. The whole monetary story
-of the era is already sitting in the goods list.
+The rule survives it, which is the point. A mayor sets **how many coins come out
+of a lump of silver**. He does not set what his coin is worth. The market does
+that, and a light coin is discounted at every other port, which is Gresham
+arriving on his own without being invited.
 
-The cost is friction and it is real. Silver takes hold space, so wealth has to be
-shipped, and a tax due in Macao cannot be paid with money sitting in Lisbon.
-Historically the answer was bills of exchange, which is a mechanic in its own
-right.
+It needs coin to be identifiable by mint, so it is a second thing. Start with one
+coin at a fixed weight, and the mayor's power is whether there is a mint here and
+who may use it, which is already plenty.
 
-Not now. But it is worth remembering, because it turns a tuning problem into a
-physical one, and physical problems are the ones this game is good at.
+## Gold, later
+
+The same machinery twice. It is also what turns gold's line of character,
+"trades at a different rate in India, pure arbitrage", from flavour into a
+mechanic.
+
+## What this costs
+
+**Coin is a good, so your money is at a port.** You cannot pay a due in Macao
+with coin sitting in Lisbon. Wealth has to be shipped, which means carrying money
+is a voyage, which is trade.
+
+That is the right kind of cost. It is also exactly the problem bills of exchange
+were invented to solve, so the game has somewhere obvious to grow.
+
+## Where tax goes
+
+If minting is the only source, tax should go to the **town's purse** rather than
+be burned. Otherwise towns drain and stop buying, and the circulation stops.
+
+Money then goes player, tax, town, purchase, player. The only creation is a mint
+and the only destruction is a crucible, and there is no dial anywhere in it.
 
 ## Open
 
-**Is there a money unit at all, or is it silver?** Everything above assumes an
-abstract unit.
+**Who may use a mint.** Anyone who brings silver, or only those the mayor
+permits? The second is a much sharper political weapon.
 
-**Do towns have a purse, or infinite money?** Infinite is simpler and makes the
-town a pure faucet. A purse makes a poor town a real place.
+**What seigniorage is taken in.** A share of the coin, or a share of the metal.
 
-**Where does tax actually go?** Burned is the simple answer and it is what makes
-it a sink. Anything else, including a mayor's treasury, puts the money back.
+**Which ports begin with a mint**, and whether a mayor can raise one anywhere or
+only where the world says a mint may stand.
+
+**Does the town have a purse at all**, or is it an infinite counterparty? A purse
+makes a poor town a real place and makes the tax loop matter.
