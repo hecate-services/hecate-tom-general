@@ -36,20 +36,22 @@ Plus the world, which no player owns and which is always on:
 | Repo | Holds |
 |------|-------|
 | `hecate-tom-general` | This one. Plans, designs, guides, decisions |
-| `hecate-tom-world` | Owns reference data: goods, harbours, recipes, regions. Publishes facts. Linked by nobody |
-| `hecate-tom-harbour` | One port's market and elections. Infrastructure, owned by nobody |
-| `hecate-tom-house` | The player's service. Magnate, trader and mayor in one install |
-| `hecate-tom-ocean` | Travel, weather, storms and pirates. Holds ships in transit |
+| `hecate-tom-world` | What exists, and one of the places in it. One binary, run once per place. Always on, owned by nobody |
+| `hecate-tom-player` | The person. Magnate, trader and mayor in one install, driven by a page or by a policy |
+| `hecate-tom-ocean` | Travel, weather, storms and pirates. Holds ships in transit. **Dissolves** into the two above, see [DESIGN_VOYAGE.md](design/DESIGN_VOYAGE.md) |
 
-**One service per owner, not one service per role.** World, harbour and ocean
-are separate because different parties own them and they must stay up. Magnate,
-trader and mayor are one person's stuff on one laptop, so they are one service.
+**The world runs places. The player runs people.** One service per **owner**,
+applied all the way: what nobody owns and must not go dark is one binary, what a
+person owns and may switch off is the other. Executed 2026-08-13; the ocean is
+the last piece and goes when the voyage lands. See
+[DESIGN_TWO_SERVICES.md](design/DESIGN_TWO_SERVICES.md).
 
-**There is no shared library.** One service owns a fact and the others consume
-it. A shared domain model would couple every service to one shape and would mean
-every player upgrading in lockstep to learn about a new good, which is exactly
-what the mesh is supposed to avoid. What a service links is `macula`, like any
-other client, and nothing of ours.
+**There is still no shared library**, and the rule now sits on the boundary it
+was written for. A player links `macula` and nothing of ours, because a player
+upgrades when they feel like it and a new good must not mean eight people
+redeploy on the same afternoon. A place is not a laptop: it is one of eight
+instances under watchtower, owned by the steward, so between the world's data and
+a port's market there is no boundary left for the rule to police.
 
 ## Documents
 

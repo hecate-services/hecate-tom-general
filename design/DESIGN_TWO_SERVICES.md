@@ -3,8 +3,15 @@
 *This exists so that who owns a thing decides which service it is, and so a
 player can be a bot.*
 
-**Status:** proposed 2026-08-12, nothing built. Classified **BUILD**. It makes no
-claim about the world, so it gets tests and commits and no adversarial gate.
+**Status:** proposed 2026-08-12. Classified **BUILD**. It makes no claim about
+the world, so it gets tests and commits and no adversarial gate.
+
+**Steps 1 and 3 executed 2026-08-13**, in one sitting: the world's six modules
+came into the harbour as `know_the_world/`, the harbour became
+`hecate-tom-world` and the house became `hecate-tom-player`. 183 tests in the
+world and 128 in the player, elvis and dialyzer clean on both. **The ocean is
+still up and still a service**, because step 2 is the voyage and that has not
+been done, so the count is four repositories today and three when it lands.
 
 It finishes what [DESIGN_VOYAGE.md](DESIGN_VOYAGE.md) started, revises the
 repository table in the [README](../README.md) and the layout in
@@ -192,10 +199,16 @@ Cheaper than building the magnate and finding out.
 
 ## Open
 
-**Which repository survives the merge.** The harbour has the substance, so it
-should take the name, but GitHub will not free `hecate-tom-world` until the old
-one is renamed or archived. Mechanical, and it wants doing in one sitting so no
-push lands on a name that has moved.
+~~**Which repository survives the merge.**~~ **Settled 2026-08-13: the harbour
+survives and takes the name.** Its history stays attached to the code that will
+be worked on next, which the world's six modules will not be. Archiving does not
+free a name on GitHub, so the old repository was renamed to
+`hecate-tom-world-superseded` first and archived under that; its seven commits
+are readable there, and the local checkout is in `hecate-services/.attic/`.
+
+The alternative, letting the world repository absorb the harbour, was better on
+the naming and worse where it counts: it would have left the market, the
+crossing and the four probes with a one-line history saying "moved".
 
 **Where a bot's policy lives.** A module in `tom-player` and a line of config is
 enough for one arbitrageur. It is not obviously enough for a holder deciding

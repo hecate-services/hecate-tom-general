@@ -15,9 +15,15 @@ involvement. Do not read a station name as a place in the story.
 | What | Where | Runtime |
 |------|-------|---------|
 | `hecate-tom-ocean`, one instance | `msi00.lab` | podman, Quadlet unit, `podman auto-update` |
-| `hecate-tom-harbour`, eight instances | `beam00.lab` to `beam03.lab`, two per node | docker, watchtower |
-| `hecate-tom-world`, one instance | with the realm | to be decided |
-| `hecate-tom-house`, one per player | the player's own machine | whatever is convenient. It dials out |
+| `hecate-tom-world`, eight instances | `beam00.lab` to `beam03.lab`, two per node | docker, watchtower |
+| `hecate-tom-player`, one per player | the player's own machine | whatever is convenient. It dials out |
+
+⚠ **Revised 2026-08-13.** The row that read `hecate-tom-harbour`, eight
+instances, is now `hecate-tom-world`: same eight processes, same two per node,
+one binary that carries the world's data with it. The separate one-instance
+world row is gone, and with it the question of where it ran. The ocean row goes
+when [DESIGN_VOYAGE.md](DESIGN_VOYAGE.md) lands. See
+[DESIGN_TWO_SERVICES.md](DESIGN_TWO_SERVICES.md).
 
 Each harbour dials a **different** `macula-station`, so that eight harbours are
 genuinely separate peers on the mesh rather than eight processes sharing one
