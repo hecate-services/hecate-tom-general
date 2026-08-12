@@ -1,0 +1,6 @@
+# An Erlang crash dump is a moment, not a document.
+erl_crash.dump
+
+# Editors and build leftovers
+*~
+.DS_Store
