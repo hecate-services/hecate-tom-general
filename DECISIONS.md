@@ -40,6 +40,14 @@ is a deliberate act rather than a slow drift.*
 | ~~2026-08-11~~ **revised same day** | Who owns "how long"? | ~~The ocean~~ → **distance is the world's, duration is the passage's.** [DESIGN_PLACES.md](design/DESIGN_PLACES.md) was right that a passage time is weather and hull, but distance was never separated from duration, so both went to the sea and the map got neither |
 | 2026-08-11 | Where do measure and exposure live? | **On a leg, not a route.** A route already carries `via`, so it is already segmented. Length is then derived, adding a waypoint recomputes it, and the dangerous part can be the strait rather than the whole crossing |
 | 2026-08-11 | What belongs in the world? | **What everyone must agree on. The service holds the computation.** The market already worked this way by accident: `tom_crossing`'s eleven constants are agreements, the bisection is the harbour's business. Leagues, exposure, tempo and hazard are the same |
+| 2026-08-12 | How many kinds of service are there? | **Two. `tom-world` runs places, `tom-player` runs people.** One service per **owner**, applied all the way: what nobody owns and must not go dark is one binary, what a person owns and may switch off is the other. See [design/DESIGN_TWO_SERVICES.md](design/DESIGN_TWO_SERVICES.md) |
+| 2026-08-12 | Is a harbour, a fort or a trading post a different service? | **No. Same binary, different configuration**, which [design/DESIGN_PLACES.md](design/DESIGN_PLACES.md) had already settled for waypoints. A harbour is a place with a market and an electorate, a fort is a place with a garrison and no market. The binary is the world; an instance is a place |
+| 2026-08-12 | Is `tom-world` one process? | **Never.** One binary, one instance per place, each dialling a different station. A singular name invites the singleton the ocean just died of: `msi00` down meant nothing sailed anywhere |
+| 2026-08-12 | Does world data reach a place by facts or by a function call? | **By a function call, because after this they are one service.** The no-shared-library rule is *unchanged*: it was written because services run on their owners' laptops, and places do not. Places are eight instances under watchtower, owned by the steward, rolled in seconds. The rule hardens where it earns its keep, at the player, who links `macula` and nothing of ours |
+| 2026-08-12 | How does a player learn what exists? | **A versioned artifact, checked by `tom_world:digest/1`.** Not the nine events of [design/DESIGN_WORLD.md](design/DESIGN_WORLD.md), which are unbuilt and now have no consumer. Permanent, additive, never-deleted data does not need a log to be caught up on. The events return the day a good is introduced at runtime without rolling the fleet |
+| 2026-08-12 | Bot or human? | **One binary, one command surface, two drivers.** A page or a policy, both calling the same desks. The seam exists already: the page posts to `/act`. Two code paths get written twice, drift, and the bot quietly becomes the one that works |
+| 2026-08-12 | What is the bot for? | **It is an instrument before it is an opponent.** A bot arbitraging two places drives the gap to the crossing, so the expectation is that it flattens the map in an hour and the world goes quiet. That finding decides whether the magnate is the next build, and it costs a day instead of a fortnight |
+| ~~2026-08-11~~ **revised 2026-08-12** | How many services does a player install? | **One**, ~~`hecate-tom-house`~~ → **`hecate-tom-player`**. One service per **owner**, not one per role. A mayor is elected by magnates and is one of them, so he cannot live in a different binary. Renamed because the binary now holds bots as well as houses, and a bot keeps no house |
 
 ## 2026-08-10: two player roles, not three
 
@@ -164,3 +172,55 @@ with a cursor and a `taken` flag, because in both shapes a delivery obligation
 was a side table on a central actor. As the ship's own behaviour there is no side
 table, because there is nothing beside her: she reaches a dark port, lies in the
 roads, and waits for them to open.
+
+## 2026-08-12: two services, and the boundary that was in the wrong place
+
+**The world runs places. The player runs people.** Full reasoning in
+[design/DESIGN_TWO_SERVICES.md](design/DESIGN_TWO_SERVICES.md); what belongs
+here is why it is not a reversal, and how small it is.
+
+### The rule that looked broken is not
+
+"No shared domain library" was decided on 2026-08-11 with this justification: a
+harbour that must link a new schema to understand a new good means every player
+upgrades in lockstep, and in a game whose services run on their owners' laptops
+that is a standstill.
+
+The premise is true and it does not describe a harbour.
+[design/DESIGN_DEPLOYMENT.md](design/DESIGN_DEPLOYMENT.md) puts eight of them two
+apiece on `beam00` to `beam03`, under watchtower, owned by the steward. Rolling
+them is one push and a few seconds, and nobody is asked. The laptops in that
+sentence are the players, and only the players.
+
+So the rule was written for one boundary and enforced at two. Merging the world
+into the place does not weaken it. It deletes a boundary the rule was policing
+for no one, and leaves the rule standing where the whole argument came from.
+
+### It is one repository
+
+Five today. [design/DESIGN_VOYAGE.md](design/DESIGN_VOYAGE.md) already takes it
+to four. This takes it to three, of which one holds no code. Anyone reading
+"reduce to two services" as a large consolidation should read it again as what it
+is: the last step of one already under way, plus two renames.
+
+**The substance is the role model and the bot**, and both are additions rather
+than a restructure.
+
+### The shape was already found twice, in the same document
+
+[design/DESIGN_PLACES.md](design/DESIGN_PLACES.md) got there on 2026-08-11
+without generalising it. A fort is a harbour without a market, same service and
+different configuration. Holders can be bots, one release, some instances driven
+by a human through a page and some by a policy, no new kind of service anywhere.
+
+That is exactly this decision, stated about waypoints. A design that keeps
+arriving at the same shape from different directions is usually being told
+something.
+
+### What is deliberately not fixed
+
+The purse is on the player and nothing checks it, so a cheat and a bot are the
+same binary with different configuration. There is no better home for it: money
+is not local to a place. Recorded so the absence reads as a decision, exactly as
+`tom_buy_cargo` already records that `not_yours` is a check against a mistake and
+not against an attacker.
