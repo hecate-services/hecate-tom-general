@@ -4,3 +4,5 @@ erl_crash.dump
 # Editors and build leftovers
 *~
 .DS_Store
+mix.lock
+rebar.lock
